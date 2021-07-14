@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: local("SFProDisplay"),
+    url(./assets/fonts/SFProDisplay.ttf) format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root {
+  font-family: SFProDisplay, serif;
+  height: 100%;
+  margin: 0;
+}
+
+@layer utilities {
+  @variants responsive {
+    .indent-1 {
+      text-indent: 10px;
+    }
+    .separator {
+      border: 1px solid #979797;
+      mix-blend-mode: normal;
+      opacity: 0.2;
+    }
+    .profile {
+      width: 850px;
+      max-width: 100%;
+      margin: auto;
+      margin-top: 10rem;
+      margin-bottom: 6rem;
+    }
+    .container-card {
+      height: 160px;
+    }
+    .card {
+      min-width: 275px;
+      width: 275px;
+      height: 145px;
+    }
+    .bglinear-black {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.0001) 6.91%,
+        #000000 68.61%
+      );
+    }
+  }
 }
