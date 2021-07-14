@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Login from "./views/login";
 import Menu from "./components/menu";
+import Profile from "./views/profile";
 import Footer from "./components/footer";
 
 const App = () => (
@@ -11,6 +12,9 @@ const App = () => (
       <Switch>
         <Route exact path={["/login", "/"]}>
           <Login />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
       <Footer />
