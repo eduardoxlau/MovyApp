@@ -1,22 +1,21 @@
-import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Logo from "./../../assets/logo.png";
-import User from "./../../assets/user.png";
-import Look from "./../../assets/icons/look.png";
-import Arrow from "./../../assets/icons/arrow.png";
+import Logo from 'assets/logo.png';
+import User from 'assets/user.png';
+import Look from 'assets/icons/look.png';
+import Arrow from 'assets/icons/arrow.png';
 
-const items = ["Home", "Movies", "Series", "Recently Added", "My list"];
+const items = ['Home', 'Movies', 'Series', 'Recently Added', 'My list'];
 
 type MenuProps = {
   isAuth?: boolean;
 };
 
-const Menu: FunctionComponent<MenuProps> = ({ isAuth = false }) => {
+const Menu = ({ isAuth }: MenuProps) => {
   const itemsAuth = (
     <div className="mt-5 md:m-0 flex flex-1 flex-col md:flex-row items-center">
-      {items.map((item, index) => (
-        <div key={item + index} className="mx-5">
+      {items.map((item) => (
+        <div key={item} className="mx-5">
           {item}
         </div>
       ))}
@@ -54,4 +53,7 @@ const Menu: FunctionComponent<MenuProps> = ({ isAuth = false }) => {
   );
 };
 
+Menu.defaultProps = {
+  isAuth: false,
+};
 export default Menu;
