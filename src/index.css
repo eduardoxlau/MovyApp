@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "SFProDisplay";
-  src: local("SFProDisplay"),
-    url(./assets/fonts/SFProDisplay.ttf) format("truetype");
+  font-family: 'SFProDisplay';
+  src: local('SFProDisplay'),
+    url(./assets/fonts/SFProDisplay.ttf) format('truetype');
 }
 
 html,
@@ -18,6 +18,17 @@ body,
 
 @layer utilities {
   @variants responsive {
+    .toggle .line1 {
+      transform: scale(0.9) rotateZ(-45deg) translate(-10px, 4px);
+    }
+
+    .toggle .line2 {
+      display: none;
+    }
+
+    .toggle .line3 {
+      transform: scale(0.9) rotateZ(45deg) translate(-10px, -4px);
+    }
     .indent-1 {
       text-indent: 10px;
     }
