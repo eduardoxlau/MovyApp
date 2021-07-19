@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Home from 'views/home';
 import Login from 'views/login';
 import MyList from 'views/myList';
 import Menu from 'components/menu';
@@ -19,6 +20,9 @@ const App = () => (
         </Route>
         <Route path="/my-list">
           <MyList />
+        </Route>
+        <Route path="/home">
+          <Home />
         </Route>
       </Switch>
       <Footer />

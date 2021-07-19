@@ -47,7 +47,7 @@ const Menu = ({ isAuth }: MenuProps) => {
   return (
     <div className="absolute w-full">
       <div className="container  mx-auto flex text-white items-center pt-12 text-4xl md:text-lg flex-col md:flex-row">
-        <div className="md:mr-14">
+        <div className="md:mr-14 z-10">
           <img className="w-16" src={Logo} alt="" />
         </div>
         <div
@@ -73,6 +73,6 @@ const Menu = ({ isAuth }: MenuProps) => {
 };
 
 Menu.defaultProps = {
-  isAuth: false,
+  isAuth: true,
 };
 export default Menu;

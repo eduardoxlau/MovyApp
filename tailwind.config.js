@@ -14,7 +14,9 @@ module.exports = {
       black: colors.black,
       mate: '#171717',
       white: colors.white,
+      blue: colors.blue,
       gray: colors.gray,
+      pink: colors.pink,
       button: '#0578FF',
     },
     backgroundImage: () => ({

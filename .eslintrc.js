@@ -22,6 +22,7 @@ module.exports = {
         map: [
           ['views', './src/views'],
           ['assets', './src/assets'],
+          ['mocks', './src/mocks'],
           ['components', './src/components'],
         ],
         extensions: ['.js', '.tsx', '.json'],
@@ -30,6 +31,9 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    'react/jsx-props-no-spreading': 'off',
+    'operator-linebreak': 'off',
+    'object-curly-newline': 'off',
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'prettier/prettier': 'error',
