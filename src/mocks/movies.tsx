@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 import { ItemInterface } from 'components/card';
 
 import Card1 from 'assets/card1.png';
@@ -13,7 +15,7 @@ import More1 from 'assets/more1.png';
 import More2 from 'assets/more2.png';
 import More3 from 'assets/more3.png';
 import More4 from 'assets/more4.png';
-
+/*
 export const moviesSuggestions: ItemInterface[] = [
   {
     id: 0,
@@ -141,3 +143,4 @@ export const moviesByMovy: ItemInterface[] = [
       'During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew.',
   },
 ];
+ */

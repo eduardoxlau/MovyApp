@@ -5,21 +5,22 @@ import Save from 'assets/icons/save.png';
 import Sound from 'assets/icons/sound.png';
 import Camera from 'assets/icons/camera.png';
 
-import BlackMirrorImg from 'assets/black_mirror.png';
+import { ItemInterface } from 'components/card';
 
-const Trailer = () => (
+const Trailer = ({ backdrop_url, title, overview, stars }: ItemInterface) => (
   <div
     className="w-full relative bg-cover bg-top bg-center flex flex-col"
     style={{
-      backgroundImage: `url("${BlackMirrorImg}")`,
+      backgroundImage: `url("${backdrop_url}")`,
       minHeight: '600px',
     }}
   >
+    <div className="w-full h-full absolute bg-black opacity-50 z-0" />
     <div className="w-full h-52 bglinear-black-180" />
-    <div className="container flex flex-col md:w-4/5 mx-auto flex-grow">
+    <div className="container flex flex-col md:w-4/5 mx-auto flex-grow z-10">
       <div className="py-6 opacity-60">2019 . Action, Thiller</div>
       <div className="flex items-center flex-col md:flex-row">
-        <div className="text-6xl font-black opacity-80 mb-2">BLACK MIRROR</div>
+        <div className="text-6xl font-black opacity-80 mb-2">{title}</div>
         <div className="rounded-full border border-white mr-auto md:mr-0 md:ml-auto text-xl px-6 py-1 font-bold opacity-90">
           PG13
         </div>
@@ -37,21 +38,14 @@ const Trailer = () => (
           <div>Quentien cuarentino</div>
         </div>
         <div className="flex items-center">
-          <img className="w-4 mr-1" src={Star} alt="" />
-          <img className="w-4 mr-1" src={Star} alt="" />
-          <img className="w-4 mr-1" src={Star} alt="" />
-          <img className="w-4 mr-1" src={Star} alt="" />
+          {Array(stars)
+            .fill('')
+            .map(() => (
+              <img className="w-4 mr-1" src={Star} alt="" />
+            ))}
         </div>
       </div>
-      <div className="mb-40 mt-10 text-lg leading-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-        odio, dolorum architecto delectus facere commodi deserunt iure cumque
-        unde. Eveniet atque vel sed possimus dolores facere fugiat corrupti
-        illo. Vitae! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Repudiandae odio, dolorum architecto delectus facere commodi deserunt
-        iure cumque unde. Eveniet atque vel sed possimus dolores facere fugiat
-        corrupti illo. Vitae!
-      </div>
+      <div className="mb-40 mt-10 text-lg leading-8">{overview}</div>
       <div className="flex flex-grow items-center text-lg color-trailer flex-col md:flex-row">
         <div className="flex font-thin">
           <div className="flex items-center">

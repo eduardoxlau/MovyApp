@@ -17,6 +17,7 @@ module.exports = {
       blue: colors.blue,
       gray: colors.gray,
       pink: colors.pink,
+      red: colors.red,
       button: '#0578FF',
     },
     backgroundImage: () => ({
@@ -32,7 +33,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: { zIndex: ['hover'] },
+    extend: { zIndex: ['hover'], fontWeight: ['hover'] },
   },
   plugins: [],
 };

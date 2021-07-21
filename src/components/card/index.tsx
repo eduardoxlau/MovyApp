@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useState } from 'react';
 
 import Star from 'assets/icons/star.png';
@@ -8,9 +9,12 @@ import Triangle from 'assets/icons/triangle.png';
 
 export type ItemInterface = {
   id: number;
-  img: string;
   title: string;
-  description: string;
+  overview: string;
+  card_url: string;
+  poster_url: string;
+  backdrop_url: string;
+  stars: number;
 };
 
 type CardProps = {
@@ -20,27 +24,19 @@ type CardProps = {
   scale?: boolean;
   idSelected?: number | undefined;
   type?: 'wide' | 'large';
-  // eslint-disable-next-line no-unused-vars
-  onSelected: (item: ItemInterface) => void;
+  onSelected: () => void;
 };
 
 const Card = (card: CardProps) => {
-  const {
-    onSelected = () => null,
-    scale,
-    type,
-    item,
-    border,
-    idSelected,
-    index,
-  } = card;
+  const { onSelected, scale, type, item, border, idSelected, index } = card;
   const [isHover, setHover] = useState(false);
 
   const printBorder =
     (border && idSelected === item.id) ||
-    (idSelected === undefined && index === 0);
+    (border && idSelected === undefined && index === 0);
+
   return (
-    <div onClick={() => onSelected(item)}>
+    <div onClick={onSelected}>
       {type === 'wide' ? (
         <div
           className={`flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer ${
@@ -49,7 +45,7 @@ const Card = (card: CardProps) => {
         >
           <img
             className={`img-card ${printBorder && 'border-4'}`}
-            src={item?.img}
+            src={item?.card_url}
             alt=""
           />
           {printBorder && (
@@ -64,7 +60,7 @@ const Card = (card: CardProps) => {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
-          <img src={item?.img} alt="" />
+          <img src={item?.poster_url} alt="" />
           {isHover ? (
             <div className="container-hover ">
               <div className="opacity-30 w-full flex justify-center mb-auto mt-10">
@@ -76,10 +72,11 @@ const Card = (card: CardProps) => {
                   {item?.title}
                 </div>
                 <div className="flex items-center mx-1 flex-wrap justify-center self-center">
-                  <img className="w-2 m-1" src={Star} alt="" />
-                  <img className="w-2 m-1" src={Star} alt="" />
-                  <img className="w-2 m-1" src={Star} alt="" />
-                  <img className="w-2 m-1" src={Star} alt="" />
+                  {Array(item.stars)
+                    .fill('')
+                    .map(() => (
+                      <img className="w-2 m-1" src={Star} alt="" />
+                    ))}
                 </div>
               </div>
               <div className="mt-4 mb-8 flex  text-sm justify-center text-center">
@@ -107,7 +104,7 @@ const Card = (card: CardProps) => {
 };
 
 Card.defaultProps = {
-  borde: false,
+  border: false,
   scale: true,
   type: 'wide',
   onSelected: () => null,
