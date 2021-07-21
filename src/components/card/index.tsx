@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { useState } from 'react';
 
 import Star from 'assets/icons/star.png';
