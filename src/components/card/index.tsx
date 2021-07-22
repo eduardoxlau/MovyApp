@@ -10,6 +10,7 @@ export type ItemInterface = {
   id: number;
   title: string;
   overview: string;
+  trailer_url: string;
   card_url: string;
   poster_url: string;
   backdrop_url: string;
@@ -29,7 +30,6 @@ type CardProps = {
 const Card = (card: CardProps) => {
   const { onSelected, scale, type, item, border, idSelected, index } = card;
   const [isHover, setHover] = useState(false);
-
   const printBorder =
     (border && idSelected === item.id) ||
     (border && idSelected === undefined && index === 0);

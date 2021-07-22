@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Play from 'assets/icons/play.png';
 import Star from 'assets/icons/star.png';
 import Save from 'assets/icons/save.png';
@@ -5,7 +7,7 @@ import Share from 'assets/icons/share_blue.png';
 import { ItemInterface } from 'components/card';
 
 const Overview = (item: ItemInterface) => {
-  const { title, overview: description, stars } = item;
+  const { title, overview: description, stars, id } = item;
   return (
     <div className="z-10 flex container mx-auto flex-col">
       <div className="flex pb-3 items-center font-bold text-4xl">
@@ -33,7 +35,7 @@ const Overview = (item: ItemInterface) => {
       <div className="flex justify-around md:justify-start  text-xl  font-thin">
         <div className="flex items-center color-trailer md:mr-20 cursor-pointer">
           <img className="w-3 mr-3" src={Play} alt="" />
-          Watch Trailer
+          <Link to={`/trailer/${id}`}>Watch Trailer</Link>
         </div>
         <div className="flex items-center color-trailer md:mr-20 cursor-pointer">
           <img className="w-3 mr-3" src={Save} alt="" />

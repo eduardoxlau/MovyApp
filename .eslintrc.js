@@ -33,6 +33,7 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    'jsx-a11y/iframe-has-title': 'off',
     'react/jsx-one-expression-per-line': 'off',
     camelcase: 'off',
     'comma-dangle': 'off',

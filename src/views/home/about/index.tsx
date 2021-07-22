@@ -6,7 +6,7 @@ import Overview from './overview';
 import Details from './details';
 import More from './more';
 
-const About = (item: ItemInterface) => {
+const About = ({ item }: { item: ItemInterface }) => {
   const { backdrop_url } = item;
   return (
     <div

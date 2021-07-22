@@ -38,7 +38,10 @@ const Menu = ({ isAuth }: MenuProps) => {
           </NavLink>
         </div>
       ))}
-      <div className="mt-5 md:m-0 md:ml-auto flex items-center flex-col justify-center">
+      <div
+        className="mt-5 md:m-0 md:ml-auto flex items-center flex-col justify-center"
+        onMouseLeave={() => setSetting(false)}
+      >
         <div className="flex items-center ">
           <img src={Look} alt="" />
           <div className="bg-button ml-5 p-0.5 rounded-full">
@@ -97,7 +100,9 @@ const Menu = ({ isAuth }: MenuProps) => {
     <div className="absolute w-full">
       <div className="container  mx-auto flex text-white items-center md:items-start pt-12 text-4xl md:text-lg flex-col md:flex-row">
         <div className="md:mr-14 z-10">
-          <img className="w-16" src={Logo} alt="" />
+          <Link to="/home">
+            <img className="w-16" src={Logo} alt="" />
+          </Link>
         </div>
         <div
           className={`z-30 md:hidden p-5 fixed flex flex-col justify-around p-0.5 rounder cursor-pointer inset-10 w-10 h-10 ${

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import Star from 'assets/icons/star.png';
 import Imdb from 'assets/icons/imdb.png';
 import Save from 'assets/icons/save.png';

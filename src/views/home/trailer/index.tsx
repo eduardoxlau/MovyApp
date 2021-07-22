@@ -1,13 +1,20 @@
+import { Link } from 'react-router-dom';
+
 import Star from 'assets/icons/star.png';
 import Play from 'assets/icons/play.png';
 import Imdb from 'assets/icons/imdb.png';
 import Save from 'assets/icons/save.png';
 import Sound from 'assets/icons/sound.png';
 import Camera from 'assets/icons/camera.png';
-
 import { ItemInterface } from 'components/card';
 
-const Trailer = ({ backdrop_url, title, overview, stars }: ItemInterface) => (
+const Trailer = ({
+  backdrop_url,
+  title,
+  overview,
+  stars,
+  id,
+}: ItemInterface) => (
   <div
     className="w-full relative bg-cover bg-top bg-center flex flex-col"
     style={{
@@ -54,7 +61,7 @@ const Trailer = ({ backdrop_url, title, overview, stars }: ItemInterface) => (
           </div>
           <div className="flex items-center">
             <img className="w-5 md:ml-20 mr-3" src={Play} alt="" />
-            Watch Trailer
+            <Link to={`/trailer/${id}`}>Watch Trailer</Link>
           </div>
           <div className="flex items-center">
             <img className="w-20 md:ml-20 mr-3" src={Imdb} alt="" />

@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
 import { useQuery } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
+import Loading from 'components/loading';
 import { GET_MOVIES } from 'graphql/queries';
 import Card, { ItemInterface } from 'components/card';
 
@@ -15,16 +18,17 @@ type CardProps = {
   type?: 'wide' | 'large';
   scale?: boolean;
   border?: boolean;
+  openTrailer?: boolean;
 };
-const Login = () => {
-  let movies: ItemInterface[] = [];
-
-  const { data } = useQuery(GET_MOVIES);
-
-  if (data) movies = data.getMovies.items;
-
+const Home = () => {
+  const history = useHistory();
   const [currentItem, setItem] = useState<ItemInterface>();
-  useEffect(() => setItem(movies[0]), [movies]);
+
+  const { data, loading } = useQuery(GET_MOVIES);
+
+  if (loading) return <Loading />;
+
+  const movies: ItemInterface[] = data.getMovies.items;
 
   const sectionCards = ({
     title,
@@ -33,6 +37,7 @@ const Login = () => {
     type = 'wide',
     scale = true,
     border = false,
+    openTrailer = true,
   }: CardProps) => (
     <div>
       <div className="container text-2xl mx-auto">{title}</div>
@@ -48,7 +53,10 @@ const Login = () => {
               scale={scale}
               type={type}
               index={index}
-              onSelected={() => setItem(item)}
+              onSelected={() => {
+                if (openTrailer) history.push(`/trailer/${item.id}`);
+                setItem(item);
+              }}
               border={border}
               idSelected={currentItem?.id}
             />
@@ -67,7 +75,7 @@ const Login = () => {
   );
   return (
     <div className="bg-black flex flex-col text-white">
-      <Trailer {...movies[0]} />
+      {movies && <Trailer {...movies[0]} />}
       {sectionCards({ title: 'My List', items: movies })}
       {sectionCards({ title: 'Popular on Movy', items: movies })}
       {sectionCards({
@@ -86,10 +94,11 @@ const Login = () => {
         items: movies,
         border: true,
         scale: false,
+        openTrailer: false,
       })}
-      {currentItem && <About {...currentItem} />}
+      <About item={currentItem || movies[0]} />
     </div>
   );
 };
 
-export default Login;
+export default Home;

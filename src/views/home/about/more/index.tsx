@@ -1,13 +1,14 @@
 import { useQuery } from '@apollo/client';
 
+import Loading from 'components/loading';
 import { GET_MOVIES } from 'graphql/queries';
 import { ItemInterface } from 'components/card';
 
 const More = () => {
-  let moviesSuggestions: ItemInterface[] = [];
-  const { data } = useQuery(GET_MOVIES);
+  const { data, loading } = useQuery(GET_MOVIES);
 
-  if (data) moviesSuggestions = data.getMovies.items;
+  if (loading) return <Loading />;
+  const moviesSuggestions: ItemInterface[] = data.getMovies.items;
 
   return (
     <div className="z-10 flex container mx-auto flex-col">

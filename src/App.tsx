@@ -13,6 +13,7 @@ import link from 'graphql/link';
 import Movies from 'views/movies';
 import MyList from 'views/myList';
 import Menu from 'components/menu';
+import Trailer from 'views/trailer';
 import Profile from 'views/profile';
 import Footer from 'components/footer';
 import { getAccessToken } from 'storage';
@@ -71,6 +72,9 @@ const App = () => (
           </ProtectedRoute>
           <ProtectedRoute path="/home">
             <Home />
+          </ProtectedRoute>
+          <ProtectedRoute path="/trailer/:id">
+            <Trailer />
           </ProtectedRoute>
           <ProtectedRoute path={['/movies', '/series', '/recently']}>
             <Movies />
