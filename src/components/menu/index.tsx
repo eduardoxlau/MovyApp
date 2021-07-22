@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import { signOut } from 'storage';
 import Logo from 'assets/logo.png';
 import User from 'assets/user.png';
 import Look from 'assets/icons/look.png';
+import { signOut } from 'storage/persist';
 import Arrow from 'assets/icons/arrow.png';
+import { AppContext } from 'storage/context';
 
 const items = [
   { name: 'Home', path: '/home' },
@@ -15,11 +16,9 @@ const items = [
   { name: 'My list', path: '/my-list' },
 ];
 
-type MenuProps = {
-  isAuth?: boolean;
-};
-
-const Menu = ({ isAuth }: MenuProps) => {
+const Menu = () => {
+  const { context, setContext } = useContext(AppContext);
+  const { isAuth } = context;
   const [isOpen, setMenu] = useState(false);
   const [isSettingOpen, setSetting] = useState(false);
 
@@ -75,6 +74,7 @@ const Menu = ({ isAuth }: MenuProps) => {
             className="hover:font-bold cursor-pointer"
             onClick={() => {
               setSetting(false);
+              setContext({ isAuth: false });
               signOut();
             }}
           >

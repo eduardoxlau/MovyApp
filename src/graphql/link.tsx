@@ -3,7 +3,7 @@ import { onError } from '@apollo/client/link/error';
 import { createHttpLink, from } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import { getAccessToken, signOut } from 'storage';
+import { getAccessToken, signOut } from 'storage/persist';
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL,

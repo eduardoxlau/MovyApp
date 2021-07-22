@@ -16,7 +16,8 @@ import Menu from 'components/menu';
 import Trailer from 'views/trailer';
 import Profile from 'views/profile';
 import Footer from 'components/footer';
-import { getAccessToken } from 'storage';
+import { getAccessToken } from 'storage/persist';
+import { AppContextProvider } from 'storage/context';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL,
@@ -56,34 +57,36 @@ ProtectedRoute.defaultProps = {
 };
 
 const App = () => (
-  <ApolloProvider client={client}>
-    <Router>
-      <div className="flex flex-col h-full">
-        <Menu />
-        <Switch>
-          <ProtectedRoute exact path={['/login', '/']}>
-            <Login />
-          </ProtectedRoute>
-          <ProtectedRoute path="/profile">
-            <Profile />
-          </ProtectedRoute>
-          <ProtectedRoute path="/my-list">
-            <MyList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/home">
-            <Home />
-          </ProtectedRoute>
-          <ProtectedRoute path="/trailer/:id">
-            <Trailer />
-          </ProtectedRoute>
-          <ProtectedRoute path={['/movies', '/series', '/recently']}>
-            <Movies />
-          </ProtectedRoute>
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
-  </ApolloProvider>
+  <AppContextProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex flex-col h-full">
+          <Menu />
+          <Switch>
+            <ProtectedRoute exact path={['/login', '/']}>
+              <Login />
+            </ProtectedRoute>
+            <ProtectedRoute path="/profile">
+              <Profile />
+            </ProtectedRoute>
+            <ProtectedRoute path="/my-list">
+              <MyList />
+            </ProtectedRoute>
+            <ProtectedRoute path="/home">
+              <Home />
+            </ProtectedRoute>
+            <ProtectedRoute path="/trailer/:id">
+              <Trailer />
+            </ProtectedRoute>
+            <ProtectedRoute path={['/movies', '/series', '/recently']}>
+              <Movies />
+            </ProtectedRoute>
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  </AppContextProvider>
 );
 
 export default App;

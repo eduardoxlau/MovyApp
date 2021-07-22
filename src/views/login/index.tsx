@@ -1,15 +1,17 @@
 import { LOGIN } from 'graphql/mutations';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
+import { ChangeEvent, FormEvent, useState, useEffect, useContext } from 'react';
 
 import Fb from 'assets/icons/fb.png';
-import { setAccessToken } from 'storage';
 import Input from 'components/input/light';
+import { AppContext } from 'storage/context';
 import Notification from 'components/notification';
 
 const Login = () => {
+  const { setContext } = useContext(AppContext);
   const history = useHistory();
+
   const [login, { data, loading, error }] = useMutation(LOGIN, {
     errorPolicy: 'all',
   });
@@ -17,9 +19,9 @@ const Login = () => {
   useEffect(() => {
     if (data) {
       const {
-        login: { access_token },
+        login: { access_token, user },
       } = data;
-      setAccessToken(access_token);
+      setContext({ access_token, isAuth: true, user });
       history.push('/home');
     }
   }, [data]);
