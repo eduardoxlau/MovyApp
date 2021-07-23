@@ -1,32 +1,140 @@
-import { useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
 import Loading from 'components/loading';
-import { GET_MOVIE } from 'graphql/queries';
-import { ItemInterface } from 'components/card';
 
+import Modal from 'components/modal';
+import Add from 'assets/icons/add.png';
 import Star from 'assets/icons/star.png';
 import Save from 'assets/icons/save.png';
+import Close from 'assets/icons/close.png';
 import Camera from 'assets/icons/camera.png';
 import { useParams } from 'react-router-dom';
+import { ItemInterface } from 'components/card';
+import { GET_MOVIE, GET_LISTS } from 'graphql/queries';
+import { ADD_MOVIE_LIST, REMOVE_MOVIE_LIST } from 'graphql/mutations';
+
+export type List = {
+  id: number;
+  name: string;
+  description: string;
+  public: boolean;
+  movies: ItemInterface[];
+};
 
 const Trailer = () => {
+  const [infoModal, setInfoModal] = useState<{
+    show: boolean;
+    list: List | null;
+    isEdit: boolean;
+  }>({
+    show: false,
+    list: null,
+    isEdit: false,
+  });
+
   const { id } = useParams<{ id: string }>();
+  const [isOpenList, openList] = useState(false);
+
   const { data, loading } = useQuery(GET_MOVIE, {
     variables: { id: parseInt(id, 10) },
   });
 
-  if (loading) return <Loading />;
+  const { data: dataLists, loading: loadingLists } = useQuery(GET_LISTS);
+
+  const lists: List[] = dataLists?.getLists;
+
+  const [removeMovie, { loading: loadingRemoveMovie }] = useMutation(
+    REMOVE_MOVIE_LIST,
+    {
+      errorPolicy: 'all',
+    }
+  );
+
+  const [addMovie, { loading: loadingAddMovie }] = useMutation(ADD_MOVIE_LIST, {
+    errorPolicy: 'all',
+  });
+
+  if (loading || loadingLists) return <Loading />;
 
   const movie: ItemInterface = data.getMovie;
+
+  const list = lists.find(({ movies }) =>
+    movies.some(({ id: movieId }) => movieId === movie.id)
+  );
+
+  const addMovieToList = async (listId: number) => {
+    if (!loadingAddMovie) {
+      addMovie({
+        refetchQueries: [{ query: GET_LISTS }],
+        variables: { input: { listId, movieId: movie.id } },
+      });
+    }
+  };
+
+  const removeMovieToList = () => {
+    if (list && !loadingRemoveMovie) {
+      removeMovie({
+        refetchQueries: [{ query: GET_LISTS }],
+        variables: { input: { listId: list.id, movieId: movie.id } },
+      });
+    }
+  };
 
   return (
     <div className="bg-black flex flex-col flex-grow text-white">
       <div className="container mx-auto my-40">
-        <div className="flex">
-          <div>2019 . Action, Thiller</div>
-          <div className="flex items-center ml-20">
-            <img className="w-5 mr-3" src={Save} alt="" />
-            Watch Later
+        <div className="flex mb-4 flex-col md:flex-row">
+          <div className="flex">
+            <div>2019 . Action, Thiller</div>
+            <div className="flex items-center ml-20">
+              <img className="w-5 mr-3" src={Save} alt="" />
+              Watch Later
+            </div>
+          </div>
+          <div className="flex items-center mt-3 md:mt-0 md:ml-20 relative  ">
+            {list ? (
+              <div
+                className="cursor-pointer flex"
+                onClick={() => removeMovieToList()}
+              >
+                <img className="w-7  mr-3" src={Close} alt="" />
+                Remove to list
+              </div>
+            ) : (
+              <div onClick={() => openList((state) => !state)}>
+                <div className="flex cursor-pointer">
+                  <img className="w-7 h-7 mr-3" src={Add} alt="" />
+                  add to list
+                </div>
+                <div
+                  onMouseLeave={() => openList(false)}
+                  className={`flex flex-col bg-blue-500 p-3 rounded top-8 min-w-full w-max text-center ${
+                    isOpenList ? 'absolute' : 'hidden'
+                  }`}
+                >
+                  {lists.map(({ name, id: listId }) => (
+                    <div
+                      className="cursor-pointer hover:font-bold"
+                      onClick={() => addMovieToList(listId)}
+                    >
+                      {name}
+                    </div>
+                  ))}
+                  <div
+                    className="cursor-pointer font-bold  text-lg"
+                    onClick={() => {
+                      setInfoModal((prev) => ({
+                        ...prev,
+                        show: true,
+                      }));
+                    }}
+                  >
+                    Create new List
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -64,6 +172,19 @@ const Trailer = () => {
           )}
         </div>
       </div>
+      {infoModal.show && (
+        <Modal
+          show={infoModal.show}
+          edit={infoModal.isEdit}
+          list={infoModal.list}
+          onClose={() => {
+            setInfoModal((prev) => ({
+              ...prev,
+              show: false,
+            }));
+          }}
+        />
+      )}
     </div>
   );
 };

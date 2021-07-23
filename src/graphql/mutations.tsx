@@ -25,3 +25,45 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const CREATE_LIST = gql`
+  mutation CreateList($input: CreateListInput!) {
+    createList(input: $input) {
+      id
+      name
+      description
+    }
+  }
+`;
+
+export const EDIT_LIST = gql`
+  mutation UpdateList($input: UpdateListInput!) {
+    updateList(input: $input) {
+      status
+    }
+  }
+`;
+
+export const REMOVE_LIST = gql`
+  mutation DeleteList($id: Float!) {
+    deleteList(id: $id) {
+      status
+    }
+  }
+`;
+
+export const REMOVE_MOVIE_LIST = gql`
+  mutation RemoveMovieToList($input: ListMovieInput!) {
+    removeMovieToList(input: $input) {
+      status
+    }
+  }
+`;
+
+export const ADD_MOVIE_LIST = gql`
+  mutation AddMovieToList($input: ListMovieInput!) {
+    addMovieToList(input: $input) {
+      status
+    }
+  }
+`;

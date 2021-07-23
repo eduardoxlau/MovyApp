@@ -82,7 +82,9 @@ export const GET_MOVIES_PAGINATE = gql`
 export const GET_LISTS = gql`
   query GetLists {
     getLists {
+      id
       name
+      description
       movies {
         id
         title

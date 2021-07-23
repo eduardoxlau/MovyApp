@@ -33,6 +33,8 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'function-paren-newline': 'off',
     'jsx-a11y/iframe-has-title': 'off',
     'react/jsx-one-expression-per-line': 'off',
     camelcase: 'off',

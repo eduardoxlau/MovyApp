@@ -3,13 +3,14 @@ import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { List } from 'views/trailer';
 import Loading from 'components/loading';
-import { GET_MOVIES } from 'graphql/queries';
 import Card, { ItemInterface } from 'components/card';
+import { GET_LISTS, GET_MOVIES } from 'graphql/queries';
 
+import About from './about';
 import Trailer from './trailer';
 import Preview from './preview';
-import About from './about';
 
 type CardProps = {
   title: string;
@@ -25,10 +26,14 @@ const Home = () => {
   const [currentItem, setItem] = useState<ItemInterface>();
 
   const { data, loading } = useQuery(GET_MOVIES);
+  const { data: dataLists, loading: loadingList } = useQuery(GET_LISTS);
 
-  if (loading) return <Loading />;
+  if (loading || loadingList) return <Loading />;
 
   const movies: ItemInterface[] = data.getMovies.items;
+  const moviesOnMyLists = dataLists.getLists
+    .map((list: List) => list.movies.map((movie) => movie))
+    .flat();
 
   const sectionCards = ({
     title,
@@ -76,7 +81,12 @@ const Home = () => {
   return (
     <div className="bg-black flex flex-col text-white">
       {movies && <Trailer {...movies[0]} />}
-      {sectionCards({ title: 'My List', items: movies })}
+
+      {moviesOnMyLists.length > 0 &&
+        sectionCards({
+          title: 'My List',
+          items: moviesOnMyLists,
+        })}
       {sectionCards({ title: 'Popular on Movy', items: movies })}
       {sectionCards({
         title: 'Continue Watching for John',
