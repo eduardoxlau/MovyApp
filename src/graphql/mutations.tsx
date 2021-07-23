@@ -83,3 +83,11 @@ export const ADD_MOVIE_LIST = gql`
     }
   }
 `;
+
+export const SEEN_MOVIE = gql`
+  mutation seenMovie($movieId: Float!) {
+    seenMovie(movieId: $movieId) {
+      status
+    }
+  }
+`;

@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
 import { useQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { List } from 'views/trailer';
 import Loading from 'components/loading';
+import { AppContext } from 'storage/context';
 import Card, { ItemInterface } from 'components/card';
-import { GET_LISTS, GET_MOVIES } from 'graphql/queries';
+import { GET_LISTS, GET_MOVIES, GET_MOVIES_SEEN } from 'graphql/queries';
 
 import About from './about';
 import Trailer from './trailer';
@@ -22,15 +22,22 @@ type CardProps = {
   openTrailer?: boolean;
 };
 const Home = () => {
+  const { context } = useContext(AppContext);
+  const { user } = context;
   const history = useHistory();
   const [currentItem, setItem] = useState<ItemInterface>();
 
   const { data, loading } = useQuery(GET_MOVIES);
+
   const { data: dataLists, loading: loadingList } = useQuery(GET_LISTS);
 
-  if (loading || loadingList) return <Loading />;
+  const { data: dataMoviesSeen, loading: loadingSeen } =
+    useQuery(GET_MOVIES_SEEN);
+
+  if (loading || loadingList || loadingSeen) return <Loading />;
 
   const movies: ItemInterface[] = data.getMovies.items;
+  const moviesSeen: ItemInterface[] = dataMoviesSeen?.getMoviesSeen;
   const moviesOnMyLists = dataLists.getLists
     .map((list: List) => list.movies.map((movie) => movie))
     .flat();
@@ -88,11 +95,12 @@ const Home = () => {
           items: moviesOnMyLists,
         })}
       {sectionCards({ title: 'Popular on Movy', items: movies })}
-      {sectionCards({
-        title: 'Continue Watching for John',
-        items: movies,
-        showPercentage: true,
-      })}
+      {moviesSeen.length > 0 &&
+        sectionCards({
+          title: `Continue Watching for ${user?.full_name}`,
+          items: moviesSeen,
+          showPercentage: true,
+        })}
       {currentItem && <Preview {...movies[1]} />}
       {sectionCards({
         title: 'Most Viewed',

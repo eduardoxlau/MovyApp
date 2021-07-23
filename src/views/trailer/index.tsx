@@ -3,16 +3,21 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import Loading from 'components/loading';
 
+import {
+  ADD_MOVIE_LIST,
+  REMOVE_MOVIE_LIST,
+  SEEN_MOVIE,
+} from 'graphql/mutations';
 import Modal from 'components/modal';
 import Add from 'assets/icons/add.png';
 import Star from 'assets/icons/star.png';
 import Save from 'assets/icons/save.png';
+import Play from 'assets/icons/bt_play.png';
 import Close from 'assets/icons/close.png';
 import Camera from 'assets/icons/camera.png';
 import { useParams } from 'react-router-dom';
 import { ItemInterface } from 'components/card';
-import { GET_MOVIE, GET_LISTS } from 'graphql/queries';
-import { ADD_MOVIE_LIST, REMOVE_MOVIE_LIST } from 'graphql/mutations';
+import { GET_MOVIE, GET_LISTS, GET_MOVIES_SEEN } from 'graphql/queries';
 
 export type List = {
   id: number;
@@ -35,6 +40,7 @@ const Trailer = () => {
 
   const { id } = useParams<{ id: string }>();
   const [isOpenList, openList] = useState(false);
+  const [isPlay, setPlay] = useState(false);
 
   const { data, loading } = useQuery(GET_MOVIE, {
     variables: { id: parseInt(id, 10) },
@@ -50,6 +56,10 @@ const Trailer = () => {
       errorPolicy: 'all',
     }
   );
+
+  const [playMovie] = useMutation(SEEN_MOVIE, {
+    errorPolicy: 'all',
+  });
 
   const [addMovie, { loading: loadingAddMovie }] = useMutation(ADD_MOVIE_LIST, {
     errorPolicy: 'all',
@@ -79,6 +89,14 @@ const Trailer = () => {
         variables: { input: { listId: list.id, movieId: movie.id } },
       });
     }
+  };
+
+  const playVideo = () => {
+    setPlay(true);
+    playMovie({
+      refetchQueries: [{ query: GET_MOVIES_SEEN }],
+      variables: { movieId: movie.id },
+    });
   };
 
   return (
@@ -159,7 +177,7 @@ const Trailer = () => {
           </div>
         </div>
         <div
-          className="w-2/3 overflow-hidden relative m-auto"
+          className="w-2/3 overflow-hidden relative m-auto "
           style={{ height: '500px' }}
         >
           {movie?.trailer_url && (
@@ -167,8 +185,23 @@ const Trailer = () => {
               width="100%"
               className="w-full h-full absolute"
               height="auto"
-              src={movie?.trailer_url}
+              src={
+                isPlay ? `${movie?.trailer_url}?autoplay=1` : movie?.trailer_url
+              }
             />
+          )}
+          {!isPlay && (
+            <>
+              <div className="absolute w-full h-full bg-black opacity-50" />
+              <div className="absolute w-full h-full  flex justify-center items-center opacity-80">
+                <img
+                  className="w-40 cursor-pointer"
+                  src={Play}
+                  alt=""
+                  onClick={playVideo}
+                />
+              </div>
+            </>
           )}
         </div>
       </div>
