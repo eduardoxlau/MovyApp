@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 import { List } from 'views/trailer';
-import Input from 'components/input/light';
+import Input from 'components/input';
 import { GET_LISTS } from 'graphql/queries';
 import Close from 'assets/icons/close_window.png';
 import { CREATE_LIST, EDIT_LIST } from 'graphql/mutations';
