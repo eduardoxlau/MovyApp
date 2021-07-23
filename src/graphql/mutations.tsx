@@ -34,6 +34,14 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const REMOVE_USER = gql`
+  mutation DeleteUser {
+    deleteUser {
+      status
+    }
+  }
+`;
+
 export const CREATE_LIST = gql`
   mutation CreateList($input: CreateListInput!) {
     createList(input: $input) {

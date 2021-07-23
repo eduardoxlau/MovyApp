@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 
 import Logo from 'assets/logo.png';
 import Look from 'assets/icons/look.png';
-import { signOut } from 'storage/persist';
 import Arrow from 'assets/icons/arrow.png';
 import ProfileImg from 'assets/profile.png';
 import { AppContext } from 'storage/context';
@@ -83,7 +82,6 @@ const Menu = () => {
             onClick={() => {
               setSetting(false);
               setContext({ isAuth: false });
-              signOut();
             }}
           >
             <Link to="/">Sign Out</Link>

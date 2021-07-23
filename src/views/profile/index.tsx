@@ -3,11 +3,13 @@ import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import Input from 'components/input';
 import ProfileImg from 'assets/profile.png';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from 'graphql/mutations';
+import { useHistory } from 'react-router-dom';
 import Notification from 'components/notification';
 import { AppContext, User } from 'storage/context';
+import { REMOVE_USER, UPDATE_USER } from 'graphql/mutations';
 
 const Profile = () => {
+  const history = useHistory();
   const { context, setContext } = useContext(AppContext);
   const { user } = context;
 
@@ -16,6 +18,11 @@ const Profile = () => {
   const [setUser, { loading, data, error }] = useMutation(UPDATE_USER, {
     errorPolicy: 'all',
   });
+
+  const [removeUser, { loading: loadingRemove, error: errorRemove }] =
+    useMutation(REMOVE_USER, {
+      errorPolicy: 'all',
+    });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     updateFormData({
@@ -35,6 +42,12 @@ const Profile = () => {
       },
     });
     setContext({ ...context, user: formData });
+  };
+
+  const onRemoveUser = async () => {
+    await removeUser();
+    setContext({ isAuth: false });
+    history.push('/');
   };
 
   return (
@@ -106,10 +119,12 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex">
-          {(error || data) && (
+          {(error || data || errorRemove) && (
             <Notification
-              isError={!!error}
-              message={error?.message || 'Save Sucessfull'}
+              isError={!!error || !!errorRemove}
+              message={
+                error?.message || errorRemove?.message || 'Save Sucessfull'
+              }
             />
           )}
         </div>
@@ -130,7 +145,9 @@ const Profile = () => {
             CANCEL
           </button>
           <button
+            onClick={onRemoveUser}
             type="button"
+            disabled={loadingRemove}
             className="border-button border py-1.5 px-8 rounded m-1 w-full md:w-auto"
           >
             DELETE PROFILE
