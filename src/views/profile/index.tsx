@@ -13,7 +13,7 @@ const Profile = () => {
 
   const [formData, updateFormData] = useState<User>(user as User);
 
-  const [setUser, { loading, error }] = useMutation(UPDATE_USER, {
+  const [setUser, { loading, data, error }] = useMutation(UPDATE_USER, {
     errorPolicy: 'all',
   });
 
@@ -104,7 +104,14 @@ const Profile = () => {
               </select>
             </div>
           </div>
-          {error && <Notification message={error.message} />}
+        </div>
+        <div className="flex">
+          {(error || data) && (
+            <Notification
+              isError={!!error}
+              message={error?.message || 'Save Sucessfull'}
+            />
+          )}
         </div>
         <hr className="separator" />
         <div className="mt-5">
