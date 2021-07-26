@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { useState, useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { List } from 'views/trailer';
 import Loading from 'components/loading';
-import { AppContext } from 'storage/context';
+import { UserContext } from 'storage/context';
 import Card, { ItemInterface } from 'components/card';
 import { GET_LISTS, GET_MOVIES, GET_MOVIES_SEEN } from 'graphql/queries';
 
@@ -22,7 +22,7 @@ type CardProps = {
   openTrailer?: boolean;
 };
 const Home = () => {
-  const { context } = useContext(AppContext);
+  const { context } = useContext(UserContext);
   const { user } = context;
   const history = useHistory();
   const [currentItem, setItem] = useState<ItemInterface>();
@@ -59,7 +59,7 @@ const Home = () => {
         }`}
       >
         {items.map((item, index) => (
-          <div className="mx-1 z-0">
+          <div className="mx-1 z-0" key={item.id}>
             <Card
               item={item}
               scale={scale}

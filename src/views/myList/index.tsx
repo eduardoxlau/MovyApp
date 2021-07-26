@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
@@ -36,7 +37,7 @@ const MyList = () => {
     <div className="bg-black flex flex-col flex-grow">
       <div className="container mx-auto mt-20">
         {lists.map((list) => (
-          <div className="text-white mt-11">
+          <div className="text-white mt-11" key={list.id}>
             <div className="text-3xl flex items-center">
               <div>{list.name}</div>
               <img
@@ -64,7 +65,7 @@ const MyList = () => {
             </div>
             <div className="flex my-7 w-full overflow-scroll items-center container-card">
               {list.movies.map((item: ItemInterface, index: number) => (
-                <div className="mx-1 cursor-pointer">
+                <div className="mx-1 cursor-pointer" key={item.id}>
                   <Link to={`/trailer/${item.id}`}>
                     <Card item={item} scale index={index} />
                   </Link>

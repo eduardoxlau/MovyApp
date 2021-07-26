@@ -5,11 +5,11 @@ import { ChangeEvent, FormEvent, useState, useEffect, useContext } from 'react';
 
 import Fb from 'assets/icons/fb.png';
 import Input from 'components/input';
-import { AppContext } from 'storage/context';
+import { UserContext } from 'storage/context';
 import Notification from 'components/notification';
 
 const Login = () => {
-  const { setContext } = useContext(AppContext);
+  const { setContext } = useContext(UserContext);
   const history = useHistory();
 
   const [login, { data, loading, error }] = useMutation(LOGIN, {
