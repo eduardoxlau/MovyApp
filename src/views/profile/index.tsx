@@ -5,12 +5,12 @@ import ProfileImg from 'assets/profile.png';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import Notification from 'components/notification';
-import { AppContext, User } from 'storage/context';
+import { UserContext, User } from 'storage/context';
 import { REMOVE_USER, UPDATE_USER } from 'graphql/mutations';
 
 const Profile = () => {
   const history = useHistory();
-  const { context, setContext } = useContext(AppContext);
+  const { context, setContext } = useContext(UserContext);
   const { user } = context;
 
   const [formData, updateFormData] = useState<User>(user as User);

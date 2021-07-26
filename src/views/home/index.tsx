@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { List } from 'views/trailer';
@@ -52,7 +51,7 @@ const Home = () => {
         }`}
       >
         {items.map((item, index) => (
-          <div className="mx-1 z-0">
+          <div className="mx-1 z-0" key={item.id}>
             <Card
               item={item}
               scale={scale}

@@ -26,6 +26,7 @@ module.exports = {
           ['graphql', './src/graphql'],
           ['components', './src/components'],
           ['storage', './src/storage'],
+          ['common', './src/common'],
         ],
         extensions: ['.js', '.tsx', '.json'],
       },

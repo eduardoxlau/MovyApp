@@ -45,11 +45,9 @@ const Trailer = ({
           <div>Quentien cuarentino</div>
         </div>
         <div className="flex items-center">
-          {Array(stars)
-            .fill('')
-            .map(() => (
-              <img className="w-4 mr-1" src={Star} alt="" />
-            ))}
+          {Array.from(Array(stars).keys()).map((_) => (
+            <img className="w-4 mr-1" src={Star} alt="" key={_} />
+          ))}
         </div>
       </div>
       <div className="mb-40 mt-10 text-lg leading-8">{overview}</div>
