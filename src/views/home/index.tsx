@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Loading from 'components/loading';

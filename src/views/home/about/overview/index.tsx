@@ -19,11 +19,9 @@ const Overview = (item: ItemInterface) => {
 
       <div className="flex mt-3 mb-6 items-center">
         <div className="flex items-center">
-          {Array(stars)
-            .fill('')
-            .map(() => (
-              <img className="w-4 mr-1" src={Star} alt="" />
-            ))}
+          {Array.from(Array(stars).keys()).map((_) => (
+            <img className="w-4 mr-1" src={Star} alt="" key={_} />
+          ))}
         </div>
         <div className="rounded-full border border-white ml-16 text-xl px-6 py-1 font-bold opacity-70">
           PG13

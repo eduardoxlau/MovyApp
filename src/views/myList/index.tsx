@@ -16,7 +16,7 @@ const MyList = () => {
     <div className="bg-black flex flex-col flex-grow">
       <div className="container mx-auto mt-20">
         {lists.map(({ name, movies }) => (
-          <div className="text-white mt-11">
+          <div className="text-white mt-11" key={name}>
             <div className="text-3xl">{name}</div>
             <div className="flex my-7 w-full overflow-scroll items-center container-card">
               {movies.map((item: ItemInterface, index: number) => (

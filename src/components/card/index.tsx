@@ -79,11 +79,9 @@ const Card = (card: CardProps) => {
                   {item?.title}
                 </div>
                 <div className="flex items-center mx-1 flex-wrap justify-center self-center">
-                  {Array(item.stars)
-                    .fill('')
-                    .map(() => (
-                      <img className="w-2 m-1" src={Star} alt="" />
-                    ))}
+                  {Array.from(Array(item.stars).keys()).map((_) => (
+                    <img className="w-2 m-1" src={Star} alt="" key={_} />
+                  ))}
                 </div>
               </div>
               <div className="mt-4 mb-8 flex  text-sm justify-center text-center">
