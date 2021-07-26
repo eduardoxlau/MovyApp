@@ -47,7 +47,7 @@ const Home = () => {
         }`}
       >
         {items.map((item, index) => (
-          <div className="mx-1 z-0">
+          <div className="mx-1 z-0" key={item.id}>
             <Card
               item={item}
               scale={scale}

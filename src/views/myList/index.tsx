@@ -20,7 +20,7 @@ const MyList = () => {
             <div className="text-3xl">{name}</div>
             <div className="flex my-7 w-full overflow-scroll items-center container-card">
               {movies.map((item: ItemInterface, index: number) => (
-                <div className="mx-1 cursor-pointer">
+                <div className="mx-1 cursor-pointer" key={item.id}>
                   <Link to={`/trailer/${item.id}`}>
                     <Card item={item} scale index={index} />
                   </Link>
