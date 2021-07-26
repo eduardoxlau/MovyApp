@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 
 import Star from 'assets/icons/star.png';
 import Later from 'assets/icons/later.png';
@@ -38,12 +39,17 @@ const Card = (card: CardProps) => {
     <div onClick={onSelected}>
       {type === 'wide' ? (
         <div
-          className={`flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer ${
-            scale && 'transform transition duration-200 hover:scale-110'
-          }`}
+          className={classNames({
+            'flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer':
+              true,
+            'transform transition duration-200 hover:scale-110': scale,
+          })}
         >
           <img
-            className={`img-card ${printBorder && 'border-4'}`}
+            className={classNames({
+              'img-card': true,
+              'border-4': printBorder,
+            })}
             src={item?.card_url}
             alt=""
           />
@@ -53,9 +59,11 @@ const Card = (card: CardProps) => {
         </div>
       ) : (
         <div
-          className={`card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200  ${
-            isHover && 'scale-110 z-10 '
-          }`}
+          className={classNames({
+            'card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200':
+              true,
+            'scale-110 z-10': isHover,
+          })}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -71,11 +79,9 @@ const Card = (card: CardProps) => {
                   {item?.title}
                 </div>
                 <div className="flex items-center mx-1 flex-wrap justify-center self-center">
-                  {Array(item.stars)
-                    .fill('')
-                    .map(() => (
-                      <img className="w-2 m-1" src={Star} alt="" />
-                    ))}
+                  {Array.from(Array(item.stars).keys()).map((_) => (
+                    <img className="w-2 m-1" src={Star} alt="" key={_} />
+                  ))}
                 </div>
               </div>
               <div className="mt-4 mb-8 flex  text-sm justify-center text-center">

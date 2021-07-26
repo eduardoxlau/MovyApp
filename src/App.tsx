@@ -1,23 +1,17 @@
-import { ReactChild } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
 
 import Home from 'views/home';
 import Login from 'views/login';
-import link from 'graphql/link';
+import link from 'common/link';
 import Movies from 'views/movies';
 import MyList from 'views/myList';
 import Menu from 'components/menu';
 import Trailer from 'views/trailer';
 import Profile from 'views/profile';
 import Footer from 'components/footer';
-import { getAccessToken } from 'storage/persist';
-import { AppContextProvider } from 'storage/context';
+import ProtectedRoute from 'common/protectedRoute';
+import { UserContextProvider } from 'storage/context';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL,
@@ -25,39 +19,8 @@ const client = new ApolloClient({
   link,
 });
 
-const ProtectedRoute = ({
-  children,
-  exact,
-  path,
-  ...rest
-}: {
-  path: string | string[];
-  exact?: boolean;
-  children: ReactChild;
-}) => {
-  if (
-    Array.isArray(path) &&
-    path.some((item) => item === '/login' || item === '/') &&
-    getAccessToken()
-  ) {
-    return <Redirect to="/home" />;
-  }
-
-  return (
-    <Route
-      path={path}
-      {...rest}
-      render={() => (getAccessToken() ? children : <Login />)}
-    />
-  );
-};
-
-ProtectedRoute.defaultProps = {
-  exact: false,
-};
-
 const App = () => (
-  <AppContextProvider>
+  <UserContextProvider>
     <ApolloProvider client={client}>
       <Router>
         <div className="flex flex-col h-full">
@@ -86,7 +49,7 @@ const App = () => (
         </div>
       </Router>
     </ApolloProvider>
-  </AppContextProvider>
+  </UserContextProvider>
 );
 
 export default App;

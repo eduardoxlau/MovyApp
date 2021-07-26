@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ import User from 'assets/user.png';
 import Look from 'assets/icons/look.png';
 import { signOut } from 'storage/persist';
 import Arrow from 'assets/icons/arrow.png';
-import { AppContext } from 'storage/context';
+import { UserContext } from 'storage/context';
 
 const items = [
   { name: 'Home', path: '/home' },
@@ -17,7 +18,7 @@ const items = [
 ];
 
 const Menu = () => {
-  const { context, setContext } = useContext(AppContext);
+  const { context, setContext } = useContext(UserContext);
   const { isAuth } = context;
   const [isOpen, setMenu] = useState(false);
   const [isSettingOpen, setSetting] = useState(false);
@@ -25,7 +26,7 @@ const Menu = () => {
   const itemsAuth = (
     <div className="justify-center flex flex-1 flex-col md:flex-row items-center md:items-start">
       {items.map(({ name, path }) => (
-        <div className="mx-5 my-4 md:my-0 ">
+        <div className="mx-5 my-4 md:my-0" key={name}>
           <NavLink
             key={name}
             exact
@@ -47,9 +48,10 @@ const Menu = () => {
             <img className="w-12" src={User} alt="" />
           </div>
           <div
-            className={`cursor-pointer p-5 transform duration-200 ${
-              isSettingOpen && 'rotate-180'
-            }`}
+            className={classNames({
+              'cursor-pointer p-5 transform duration-200': true,
+              'rotate-180': isSettingOpen,
+            })}
             onClick={() => setSetting((prev) => !prev)}
           >
             <img src={Arrow} alt="" />
@@ -57,9 +59,11 @@ const Menu = () => {
         </div>
 
         <div
-          className={`flex text-center flex-col md:bg-blue-500 pt-4 pb-3 w-full rounded mt-3 text-2xl md:text-lg  ${
-            !isSettingOpen && 'hidden'
-          }`}
+          className={classNames({
+            'flex text-center flex-col md:bg-blue-500 pt-4 pb-3 w-full rounded mt-3 text-2xl md:text-lg':
+              true,
+            hidden: !isSettingOpen,
+          })}
         >
           <div
             className="hover:font-bold cursor-pointer"

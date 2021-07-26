@@ -43,11 +43,9 @@ const Preview = (item: ItemInterface) => {
                 Watch Later
               </div>
               <div className="flex items-center">
-                {Array(stars)
-                  .fill('')
-                  .map(() => (
-                    <img className="w-4 mr-1" src={Star} alt="" />
-                  ))}
+                {Array.from(Array(stars).keys()).map((_) => (
+                  <img className="w-4 mr-1" src={Star} alt="" key={_} />
+                ))}
               </div>
             </div>
             <div className="mb-10 text-lg leading-8">
