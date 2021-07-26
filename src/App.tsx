@@ -11,7 +11,7 @@ import Trailer from 'views/trailer';
 import Profile from 'views/profile';
 import Footer from 'components/footer';
 import ProtectedRoute from 'common/protectedRoute';
-import { AppContextProvider } from 'storage/context';
+import { UserContextProvider } from 'storage/context';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL,
@@ -20,7 +20,7 @@ const client = new ApolloClient({
 });
 
 const App = () => (
-  <AppContextProvider>
+  <UserContextProvider>
     <ApolloProvider client={client}>
       <Router>
         <div className="flex flex-col h-full">
@@ -49,7 +49,7 @@ const App = () => (
         </div>
       </Router>
     </ApolloProvider>
-  </AppContextProvider>
+  </UserContextProvider>
 );
 
 export default App;

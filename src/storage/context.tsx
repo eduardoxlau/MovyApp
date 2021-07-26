@@ -17,7 +17,7 @@ export type Context = {
   access_token?: string;
 };
 
-const AppContext = createContext<{
+const UserContext = createContext<{
   context: Context;
   setContext: Dispatch<Context>;
 }>({
@@ -25,7 +25,7 @@ const AppContext = createContext<{
   setContext: () => undefined,
 });
 
-const AppContextProvider = ({ children }: { children: any }) => {
+const UserContextProvider = ({ children }: { children: any }) => {
   const [context, setContext] = useState<Context>(getPersistContext());
 
   const persistContext = (data: Context) => {
@@ -34,10 +34,10 @@ const AppContextProvider = ({ children }: { children: any }) => {
   };
 
   return (
-    <AppContext.Provider value={{ context, setContext: persistContext }}>
+    <UserContext.Provider value={{ context, setContext: persistContext }}>
       {children}
-    </AppContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export { AppContext, AppContextProvider };
+export { UserContext, UserContextProvider };

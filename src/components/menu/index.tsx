@@ -7,7 +7,7 @@ import User from 'assets/user.png';
 import Look from 'assets/icons/look.png';
 import { signOut } from 'storage/persist';
 import Arrow from 'assets/icons/arrow.png';
-import { AppContext } from 'storage/context';
+import { UserContext } from 'storage/context';
 
 const items = [
   { name: 'Home', path: '/home' },
@@ -18,7 +18,7 @@ const items = [
 ];
 
 const Menu = () => {
-  const { context, setContext } = useContext(AppContext);
+  const { context, setContext } = useContext(UserContext);
   const { isAuth } = context;
   const [isOpen, setMenu] = useState(false);
   const [isSettingOpen, setSetting] = useState(false);
