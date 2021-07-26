@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 
 import Star from 'assets/icons/star.png';
 import Later from 'assets/icons/later.png';
@@ -43,12 +44,17 @@ const Card = (card: CardProps) => {
     <div onClick={() => onSelected(item)}>
       {type === 'wide' ? (
         <div
-          className={`flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer ${
-            scale && 'transform transition duration-200 hover:scale-110'
-          }`}
+          className={classNames({
+            'flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer':
+              true,
+            'transform transition duration-200 hover:scale-110': scale,
+          })}
         >
           <img
-            className={`img-card ${printBorder && 'border-4'}`}
+            className={classNames({
+              'img-card': true,
+              'border-4': printBorder,
+            })}
             src={item?.img}
             alt=""
           />
@@ -58,9 +64,11 @@ const Card = (card: CardProps) => {
         </div>
       ) : (
         <div
-          className={`card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200  ${
-            isHover && 'scale-110 z-10 '
-          }`}
+          className={classNames({
+            'card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200':
+              true,
+            'scale-110 z-10': isHover,
+          })}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

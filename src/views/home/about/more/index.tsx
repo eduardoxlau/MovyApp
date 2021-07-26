@@ -8,7 +8,10 @@ const More = () => (
     </div>
     <div className="flex w-full flex-col md:flex-row">
       {moviesSuggestions.map((suggestion) => (
-        <div className="flex flex-col mx-3 w-full md:w-1/4 mb-10">
+        <div
+          className="flex flex-col mx-3 w-full md:w-1/4 mb-10"
+          key={suggestion.id}
+        >
           <img className="h-50 w-full" src={suggestion.img} alt="" />
           <div className="flex my-4 items-center">
             <div className="text-xl">{suggestion.title}</div>
