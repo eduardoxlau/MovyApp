@@ -36,7 +36,7 @@ const Card = (card: CardProps) => {
     (border && idSelected === undefined && index === 0);
 
   return (
-    <div onClick={onSelected}>
+    <div onClick={onSelected} data-testid="card">
       {type === 'wide' ? (
         <div
           className={classNames({
@@ -54,7 +54,12 @@ const Card = (card: CardProps) => {
             alt=""
           />
           {printBorder && (
-            <img src={Triangle} alt="" className="w-10 absolute bottom-2" />
+            <img
+              src={Triangle}
+              alt=""
+              data-testid="border-active"
+              className="image-selected w-10 absolute bottom-2"
+            />
           )}
         </div>
       ) : (

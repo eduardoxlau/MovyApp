@@ -39,6 +39,7 @@ const Trailer = () => {
   });
 
   const { id } = useParams<{ id: string }>();
+
   const [isOpenList, openList] = useState(false);
   const [isPlay, setPlay] = useState(false);
 
@@ -47,8 +48,6 @@ const Trailer = () => {
   });
 
   const { data: dataLists, loading: loadingLists } = useQuery(GET_LISTS);
-
-  const lists: List[] = dataLists?.getLists;
 
   const [removeMovie, { loading: loadingRemoveMovie }] = useMutation(
     REMOVE_MOVIE_LIST,
@@ -66,6 +65,7 @@ const Trailer = () => {
   });
 
   if (loading || loadingLists) return <Loading />;
+  const lists: List[] = dataLists.getLists;
 
   const movie: ItemInterface = data.getMovie;
 
@@ -133,6 +133,8 @@ const Trailer = () => {
                 >
                   {lists.map(({ name, id: listId }) => (
                     <div
+                      key={id}
+                      data-testid="user-list"
                       className="cursor-pointer hover:font-bold"
                       onClick={() => addMovieToList(listId)}
                     >
@@ -193,6 +195,7 @@ const Trailer = () => {
               <div className="absolute w-full h-full bg-black opacity-50" />
               <div className="absolute w-full h-full  flex justify-center items-center opacity-80">
                 <img
+                  data-testid="play-video"
                   className="w-40 cursor-pointer"
                   src={Play}
                   alt=""

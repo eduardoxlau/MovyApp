@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should render snapshot Modal 1`] = `
+<div
+  className="w-full h-screen flex items-center fixed"
+>
+  <div
+    className="z-30 bg-black w-full md:w-1/2  min-h-80 m-auto text-white p-10 relative"
+  >
+    <img
+      alt=""
+      className="w-8 absolute top-2 right-2 cursor-pointer"
+      onClick={[Function]}
+      src="close_window.png"
+    />
+    <form
+      className="flex flex-col"
+      onSubmit={[Function]}
+    >
+      <div
+        className="text-3xl text-center"
+      >
+        Create 
+         List
+      </div>
+      <div>
+        <div>
+          Name:
+        </div>
+        <input
+          className="rounded w-full h-10 my-1.5 text-black indent-1"
+          name="name"
+          onChange={[Function]}
+          placeholder=""
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <div>
+          Description:
+        </div>
+        <input
+          className="rounded w-full h-10 my-1.5 text-black indent-1"
+          name="description"
+          onChange={[Function]}
+          placeholder=""
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="flex items-center mt-2"
+      >
+        <div>
+          Is public?
+        </div>
+        <input
+          className="ml-5 w-8 h-8 order-1 md:order-none"
+          name="isKid"
+          type="checkbox"
+        />
+      </div>
+      <div
+        className="mt-5"
+      >
+        <input
+          className="w-full h-11 text-center rounded cursor-pointer bg-button"
+          disabled={false}
+          type="submit"
+          value="Save"
+        />
+      </div>
+    </form>
+  </div>
+  <div
+    className="z-20 absolute opacity-60 bg-black w-full h-full"
+  />
+</div>
+`;

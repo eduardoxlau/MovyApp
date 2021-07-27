@@ -27,6 +27,7 @@ module.exports = {
           ['components', './src/components'],
           ['storage', './src/storage'],
           ['common', './src/common'],
+          ['__mocks__', './src/__mocks__'],
         ],
         extensions: ['.js', '.tsx', '.json'],
       },

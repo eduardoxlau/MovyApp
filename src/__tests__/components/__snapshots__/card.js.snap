@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should render snapshot card large 1`] = `
+<div
+  data-testid="card"
+  onClick={[Function]}
+>
+  <div
+    className="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      alt=""
+      src="http://localhost:4000/view1.png"
+    />
+    <div
+      className="absolute bottom-20 w-full flex justify-center"
+    >
+      <div
+        className="bg-blue-600 px-4 font-bold text-sm"
+      >
+        MOVIE ORIGINAL
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Card /> should render snapshot card wide 1`] = `
+<div
+  data-testid="card"
+  onClick={[Function]}
+>
+  <div
+    className="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+  >
+    <img
+      alt=""
+      className="img-card"
+      src="http://localhost:4000/card1.png"
+    />
+  </div>
+</div>
+`;
