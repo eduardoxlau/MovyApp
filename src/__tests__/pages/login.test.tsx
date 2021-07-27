@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
 import wait from 'waait';
-import renderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 
@@ -25,14 +24,12 @@ const mocks = [
 describe('<Login />', () => {
   const history = createMemoryHistory();
   it('should render snapshot Login', () => {
-    const tree = renderer
-      .create(
-        <MockedProvider mocks={mocks}>
-          <Login />
-        </MockedProvider>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(
+      <MockedProvider mocks={mocks}>
+        <Login />
+      </MockedProvider>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
   it('should submit form login', async () => {
     const { getByText } = render(
@@ -42,13 +39,16 @@ describe('<Login />', () => {
         </MockedProvider>
       </Router>
     );
-    fireEvent.change(document.querySelector('input[name="email"]'), {
+    fireEvent.change(document.querySelector('input[name="email"]') as Element, {
       target: { value: user.email },
     });
 
-    fireEvent.change(document.querySelector('input[name="password"]'), {
-      target: { value: user.password },
-    });
+    fireEvent.change(
+      document.querySelector('input[name="password"]') as Element,
+      {
+        target: { value: user.password },
+      }
+    );
     fireEvent.click(getByText('Iniciar sesión'));
     await wait(200);
     await expect(history.length).toBe(2);

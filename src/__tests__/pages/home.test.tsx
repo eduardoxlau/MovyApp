@@ -1,14 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import wait from 'waait';
-import renderer from 'react-test-renderer';
 import { createMemoryHistory } from 'history';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import { BrowserRouter, Router } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 
-import movies from '__mocks__/movies';
+import movies from '__mocks__/movies.mock';
 import { GET_LISTS, GET_MOVIES, GET_MOVIES_SEEN } from 'graphql/queries';
 import Home from 'views/home';
 
@@ -40,7 +38,7 @@ global.Math = mockMath;
 describe('<Home />', () => {
   const history = createMemoryHistory();
   it('should render snapshot Home', async () => {
-    const tree = renderer.create(
+    const { asFragment } = render(
       <MockedProvider
         mocks={mocks}
         defaultOptions={{ watchQuery: { fetchPolicy: 'no-cache' } }}
@@ -51,7 +49,7 @@ describe('<Home />', () => {
       </MockedProvider>
     );
     await wait(0);
-    expect(tree.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should redirect when clicked card', async () => {

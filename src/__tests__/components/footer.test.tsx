@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import Footer from 'components/footer';
 
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('<Footer />', () => {
   it('should render snapshot footer', () => {
-    const tree = renderer.create(<Footer />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Footer />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

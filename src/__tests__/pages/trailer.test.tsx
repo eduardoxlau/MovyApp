@@ -1,11 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import wait from 'waait';
-import renderer from 'react-test-renderer';
 import { createMemoryHistory } from 'history';
 import { Router, Route } from 'react-router-dom';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import { render, fireEvent } from '@testing-library/react';
 
 import {
@@ -13,8 +11,8 @@ import {
   ADD_MOVIE_LIST,
   SEEN_MOVIE,
 } from 'graphql/mutations';
-import movies from '__mocks__/movies';
-import lists from '__mocks__/lists';
+import movies from '__mocks__/movies.mock';
+import lists from '__mocks__/lists.mock';
 import { GET_MOVIE, GET_LISTS, GET_MOVIES_SEEN } from 'graphql/queries';
 import Trailer from 'views/trailer';
 
@@ -30,7 +28,7 @@ const mocks = [
   {
     request: {
       query: ADD_MOVIE_LIST,
-      variables: { input: { movieId: 143 } },
+      variables: { input: { listId: 8, movieId: 143 } },
     },
     result: { data: { status: 'success' } },
   },
@@ -77,7 +75,7 @@ describe('<Home />', () => {
   const history = createMemoryHistory({ initialEntries: ['/trailer/1'] });
 
   it('should render snapshot Home', async () => {
-    const tree = renderer.create(
+    const { asFragment } = render(
       <MockedProvider
         mocks={mocks}
         defaultOptions={{ watchQuery: { fetchPolicy: 'no-cache' } }}
@@ -90,7 +88,7 @@ describe('<Home />', () => {
       </MockedProvider>
     );
     await wait(0);
-    expect(tree.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
   it('should allow watch video iframe', async () => {
     const { getByTestId } = render(

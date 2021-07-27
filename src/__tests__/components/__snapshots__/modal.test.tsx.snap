@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should render snapshot Modal 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full h-screen flex items-center fixed"
+  >
+    <div
+      class="z-30 bg-black w-full md:w-1/2  min-h-80 m-auto text-white p-10 relative"
+    >
+      <img
+        alt=""
+        class="w-8 absolute top-2 right-2 cursor-pointer"
+        src="close_window.png"
+      />
+      <form
+        class="flex flex-col"
+      >
+        <div
+          class="text-3xl text-center"
+        >
+          Create  List
+        </div>
+        <div>
+          <div>
+            Name:
+          </div>
+          <input
+            class="rounded w-full h-10 my-1.5 text-black indent-1"
+            name="name"
+            placeholder=""
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div>
+          <div>
+            Description:
+          </div>
+          <input
+            class="rounded w-full h-10 my-1.5 text-black indent-1"
+            name="description"
+            placeholder=""
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="flex items-center mt-2"
+        >
+          <div>
+            Is public?
+          </div>
+          <input
+            class="ml-5 w-8 h-8 order-1 md:order-none"
+            name="isKid"
+            type="checkbox"
+          />
+        </div>
+        <div
+          class="mt-5"
+        >
+          <input
+            class="w-full h-11 text-center rounded cursor-pointer bg-button"
+            type="submit"
+            value="Save"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      class="z-20 absolute opacity-60 bg-black w-full h-full"
+    />
+  </div>
+</DocumentFragment>
+`;

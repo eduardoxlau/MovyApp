@@ -19,7 +19,7 @@ export type ItemInterface = {
 };
 
 type CardProps = {
-  index: number;
+  index?: number;
   item: ItemInterface;
   border?: boolean;
   scale?: boolean;

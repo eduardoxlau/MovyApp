@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Notification /> should render snapshot Notification 1`] = `
-<h1
-  className="w-full p-2 rounded bg-red-400 hidden"
-/>
+<DocumentFragment>
+  <h1
+    class="w-full p-2 rounded bg-red-400 flex"
+  />
+</DocumentFragment>
 `;

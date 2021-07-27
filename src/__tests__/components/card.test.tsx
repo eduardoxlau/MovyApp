@@ -1,23 +1,20 @@
 /* eslint-disable no-undef */
-import renderer from 'react-test-renderer';
+/* eslint-disable import/no-unresolved */
 import { render, fireEvent } from '@testing-library/react';
 
-// eslint-disable-next-line import/no-unresolved
-import moviesMock from '__mocks__/movies';
-import Card from 'components/card';
+import moviesMock from '__mocks__/movies.mock';
+import Card, { ItemInterface } from 'components/card';
+
+const movie: ItemInterface = moviesMock[0];
 
 describe('<Card />', () => {
   it('should render snapshot card wide', () => {
-    const tree = renderer
-      .create(<Card item={moviesMock[0]} type="wide" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Card item={movie} type="wide" />);
+    expect(asFragment()).toMatchSnapshot();
   });
   it('should render snapshot card large', () => {
-    const tree = renderer
-      .create(<Card item={moviesMock[0]} type="large" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Card item={movie} type="large" />);
+    expect(asFragment()).toMatchSnapshot();
   });
   it('should handler when clicked card', () => {
     const onSelected = jest.fn();
