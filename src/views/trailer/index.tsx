@@ -17,7 +17,8 @@ import Close from 'assets/icons/close.png';
 import Camera from 'assets/icons/camera.png';
 import { useParams } from 'react-router-dom';
 import { ItemInterface } from 'components/card';
-import { GET_MOVIE, GET_LISTS, GET_MOVIES_SEEN } from 'graphql/queries';
+import { GET_MOVIE, GET_LISTS } from 'graphql/queries';
+import { ReadFieldFunction } from '@apollo/client/cache/core/types/common';
 
 export type List = {
   id: number;
@@ -73,11 +74,37 @@ const Trailer = () => {
     movies.some(({ id: movieId }) => movieId === movie.id)
   );
 
+  const updateListCache = ({
+    listsCache,
+    readField,
+    listMutated,
+  }: {
+    listsCache: List[];
+    readField: ReadFieldFunction;
+    listMutated: List;
+  }) =>
+    listsCache.reduce((acc: List[], listCurr: List) => {
+      let newList = { ...listCurr };
+      if (readField('id', newList) === listMutated.id) {
+        newList = listMutated;
+      }
+      acc.push(newList);
+      return acc;
+    }, []);
+
   const addMovieToList = async (listId: number) => {
     if (!loadingAddMovie) {
       addMovie({
-        refetchQueries: [{ query: GET_LISTS }],
         variables: { input: { listId, movieId: movie.id } },
+        update(cache, { data: { addMovieToList: listMutated } }) {
+          cache.modify({
+            fields: {
+              getLists(listsCache: List[], { readField }) {
+                return updateListCache({ listsCache, readField, listMutated });
+              },
+            },
+          });
+        },
       });
     }
   };
@@ -85,18 +112,25 @@ const Trailer = () => {
   const removeMovieToList = () => {
     if (list && !loadingRemoveMovie) {
       removeMovie({
-        refetchQueries: [{ query: GET_LISTS }],
         variables: { input: { listId: list.id, movieId: movie.id } },
+        update(cache, { data: { removeMovieToList: listMutated } }) {
+          cache.modify({
+            fields: {
+              getLists(listsCache: List[], { readField }) {
+                return updateListCache({ listsCache, readField, listMutated });
+              },
+            },
+          });
+        },
       });
     }
   };
 
-  const playVideo = () => {
-    setPlay(true);
-    playMovie({
-      refetchQueries: [{ query: GET_MOVIES_SEEN }],
+  const playVideo = async () => {
+    await playMovie({
       variables: { movieId: movie.id },
     });
+    setPlay(true);
   };
 
   return (
@@ -135,6 +169,7 @@ const Trailer = () => {
                     <div
                       className="cursor-pointer hover:font-bold"
                       onClick={() => addMovieToList(listId)}
+                      key={listId}
                     >
                       {name}
                     </div>

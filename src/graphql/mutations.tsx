@@ -71,7 +71,15 @@ export const REMOVE_LIST = gql`
 export const REMOVE_MOVIE_LIST = gql`
   mutation RemoveMovieToList($input: ListMovieInput!) {
     removeMovieToList(input: $input) {
-      status
+      id
+      name
+      description
+      movies {
+        id
+        title
+        trailer_url
+        card_url
+      }
     }
   }
 `;
@@ -79,7 +87,15 @@ export const REMOVE_MOVIE_LIST = gql`
 export const ADD_MOVIE_LIST = gql`
   mutation AddMovieToList($input: ListMovieInput!) {
     addMovieToList(input: $input) {
-      status
+      id
+      name
+      description
+      movies {
+        id
+        title
+        trailer_url
+        card_url
+      }
     }
   }
 `;
