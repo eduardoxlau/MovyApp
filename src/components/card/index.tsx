@@ -44,15 +44,15 @@ const Card = (card: CardProps) => {
     <div onClick={() => onSelected(item)}>
       {type === 'wide' ? (
         <div
-          className={classNames({
-            'flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer':
-              true,
-            'transform transition duration-200 hover:scale-110': scale,
-          })}
+          className={classNames(
+            'flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer',
+            {
+              'transform transition duration-200 hover:scale-110': scale,
+            }
+          )}
         >
           <img
-            className={classNames({
-              'img-card': true,
+            className={classNames('img-card', {
               'border-4': printBorder,
             })}
             src={item?.img}
@@ -64,11 +64,12 @@ const Card = (card: CardProps) => {
         </div>
       ) : (
         <div
-          className={classNames({
-            'card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200':
-              true,
-            'scale-110 z-10': isHover,
-          })}
+          className={classNames(
+            'card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200',
+            {
+              'scale-110 z-10': isHover,
+            }
+          )}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

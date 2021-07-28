@@ -31,6 +31,7 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    'comma-dangle': 'off',
     'react/jsx-props-no-spreading': 'off',
     'operator-linebreak': 'off',
     'object-curly-newline': 'off',
