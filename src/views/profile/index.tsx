@@ -33,7 +33,7 @@ const Profile = () => {
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setUser({
+    await setUser({
       variables: {
         input: {
           full_name: formData.full_name,
