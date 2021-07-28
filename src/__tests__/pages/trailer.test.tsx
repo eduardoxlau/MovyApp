@@ -15,8 +15,7 @@ import movies from '__mocks__/movies.mock';
 import lists from '__mocks__/lists.mock';
 import { GET_MOVIE, GET_LISTS, GET_MOVIES_SEEN } from 'graphql/queries';
 import Trailer from 'views/trailer';
-
-let queryCalled = false;
+import { InMemoryCache } from '@apollo/client';
 
 const mocks = [
   {
@@ -30,7 +29,17 @@ const mocks = [
       query: ADD_MOVIE_LIST,
       variables: { input: { listId: 8, movieId: 143 } },
     },
-    result: { data: { status: 'success' } },
+    result: {
+      data: {
+        addMovieToList: {
+          id: 8,
+          description: 'Description list',
+          name: "Rafael's list",
+          public: true,
+          movies: [movies[0]],
+        },
+      },
+    },
   },
   {
     request: {
@@ -45,7 +54,7 @@ const mocks = [
     request: {
       query: GET_MOVIE,
       variables: {
-        id: 1,
+        id: 143,
       },
     },
     result: { data: { getMovie: movies[0] } },
@@ -54,14 +63,7 @@ const mocks = [
     request: {
       query: GET_LISTS,
     },
-    newData: () => {
-      if (queryCalled) {
-        const newList = lists;
-        newList[0].movies = [movies[0]];
-        return { data: { getLists: newList } };
-      }
-      return { data: { getLists: lists } };
-    },
+    result: { data: { getLists: lists } },
   },
   {
     request: {
@@ -72,7 +74,8 @@ const mocks = [
 ];
 
 describe('<Home />', () => {
-  const history = createMemoryHistory({ initialEntries: ['/trailer/1'] });
+  const history = createMemoryHistory({ initialEntries: ['/trailer/143'] });
+  const cache = new InMemoryCache().restore({});
 
   it('should render snapshot Home', async () => {
     const { asFragment } = render(
@@ -110,9 +113,10 @@ describe('<Home />', () => {
     expect(video).not.toBeVisible();
   });
   it('should add movie to list', async () => {
-    const { getAllByTestId, getByText } = render(
+    const { getAllByTestId } = render(
       <MockedProvider
         mocks={mocks}
+        cache={cache}
         defaultOptions={{ watchQuery: { fetchPolicy: 'no-cache' } }}
       >
         <Router history={history}>
@@ -125,9 +129,9 @@ describe('<Home />', () => {
     await wait(0);
     const movie = getAllByTestId('user-list')[0];
     fireEvent.click(movie);
-    queryCalled = true;
     await wait(200);
-    const removeButton = getByText('Remove to list');
-    expect(removeButton).toBeVisible();
+    const updatedCache = cache.extract();
+
+    expect(Object.keys(updatedCache).length).toBeGreaterThanOrEqual(1);
   });
 });

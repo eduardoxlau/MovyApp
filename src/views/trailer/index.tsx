@@ -167,7 +167,6 @@ const Trailer = () => {
                 >
                   {lists.map(({ name, id: listId }) => (
                     <div
-                      key={id}
                       data-testid="user-list"
                       className="cursor-pointer hover:font-bold"
                       onClick={() => addMovieToList(listId)}
