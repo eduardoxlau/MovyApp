@@ -66,6 +66,7 @@ const Modal = ({
 
   return (
     <div
+      data-testid="modal"
       className={`w-full h-screen flex items-center ${
         isOpen ? 'fixed' : 'hidden'
       }`}

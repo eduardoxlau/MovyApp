@@ -4,6 +4,7 @@ exports[`<Modal /> should render snapshot Modal 1`] = `
 <DocumentFragment>
   <div
     class="w-full h-screen flex items-center fixed"
+    data-testid="modal"
   >
     <div
       class="z-30 bg-black w-full md:w-1/2  min-h-80 m-auto text-white p-10 relative"

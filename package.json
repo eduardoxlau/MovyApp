@@ -34,7 +34,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.tsx' --ignore-pattern node_modules/",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "cypress": "cypress run"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -65,10 +67,12 @@
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/parser": "^4.28.3",
     "autoprefixer": "^9",
+    "cypress": "^8.0.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
