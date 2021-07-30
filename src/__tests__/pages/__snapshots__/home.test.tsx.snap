@@ -1,0 +1,914 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should render snapshot Home 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-black flex flex-col text-white"
+  >
+    <div
+      class="w-full relative bg-cover bg-top bg-center flex flex-col"
+      style="background-image: url(http://localhost:4000/avatar.png); min-height: 600px;"
+    >
+      <div
+        class="w-full h-full absolute bg-black opacity-50 z-0"
+      />
+      <div
+        class="w-full h-52 bglinear-black-180"
+      />
+      <div
+        class="container flex flex-col md:w-4/5 mx-auto flex-grow z-10"
+      >
+        <div
+          class="py-6 opacity-60"
+        >
+          2019 . Action, Thiller
+        </div>
+        <div
+          class="flex items-center flex-col md:flex-row"
+        >
+          <div
+            class="text-6xl font-black opacity-80 mb-2"
+          >
+            International Research Orchestrator
+          </div>
+          <div
+            class="rounded-full border border-white mr-auto md:mr-0 md:ml-auto text-xl px-6 py-1 font-bold opacity-90"
+          >
+            PG13
+          </div>
+        </div>
+        <div
+          class="flex my-8 items-center justify-around md:justify-start"
+        >
+          <div
+            class="bg-pink-600 px-2 py-0.5 rounded md:mr-20 text-sm flex items-center"
+          >
+            2.30h
+          </div>
+          <div
+            class="mx-10 md:mr-20 text-lg flex items-center text-center flex-col md:flex-row"
+          >
+            <img
+              alt=""
+              class="w-6 mr-3"
+              src="camera.png"
+            />
+            <div>
+              Quentien cuarentino
+            </div>
+          </div>
+          <div
+            class="flex items-center"
+          >
+            <img
+              alt=""
+              class="w-4 mr-1"
+              src="star.png"
+            />
+            <img
+              alt=""
+              class="w-4 mr-1"
+              src="star.png"
+            />
+            <img
+              alt=""
+              class="w-4 mr-1"
+              src="star.png"
+            />
+            <img
+              alt=""
+              class="w-4 mr-1"
+              src="star.png"
+            />
+          </div>
+        </div>
+        <div
+          class="mb-40 mt-10 text-lg leading-8"
+        >
+          Blanditiis similique pariatur provident dolorem repellendus. Accusamus numquam alias in saepe pariatur tenetur. Dolor consequatur quae repudiandae nulla ullam iusto odit repellat qui. Impedit sit facere nostrum nobis dolor. Magnam maiores sunt adipisci excepturi nulla sed aperiam.
+        </div>
+        <div
+          class="flex flex-grow items-center text-lg color-trailer flex-col md:flex-row"
+        >
+          <div
+            class="flex font-thin"
+          >
+            <div
+              class="flex items-center"
+            >
+              <img
+                alt=""
+                class="w-5 mr-3"
+                src="save.png"
+              />
+              Watch Later
+            </div>
+            <div
+              class="flex items-center"
+            >
+              <img
+                alt=""
+                class="w-5 md:ml-20 mr-3"
+                src="play.png"
+              />
+              <a
+                href="/trailer/143"
+              >
+                Watch Trailer
+              </a>
+            </div>
+            <div
+              class="flex items-center"
+            >
+              <img
+                alt=""
+                class="w-20 md:ml-20 mr-3"
+                src="imdb.png"
+              />
+            </div>
+          </div>
+          <div
+            class="mt-8 md:mt-0 mx-auto md:mr-0 md:ml-auto"
+          >
+            <img
+              alt=""
+              class="w-8"
+              src="sound.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full h-32 bglinear-black"
+      />
+    </div>
+    <div>
+      <div
+        class="container text-2xl mx-auto"
+      >
+        Popular on Movy
+      </div>
+      <div
+        class="flex mt-1 pb-6 relative  w-full container-movies overflow-x-scroll overflow-y-hidden  items-center container-card py-0"
+      >
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more2.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card2.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="container text-2xl mx-auto"
+      >
+        Continue Watching for undefined
+      </div>
+      <div
+        class="flex mt-1 pb-6 relative  w-full container-movies overflow-x-scroll overflow-y-hidden  items-center container-card py-0"
+      >
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more2.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer transform transition duration-200 hover:scale-110"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card2.png"
+              />
+            </div>
+          </div>
+          <div
+            class="relative w-full h-1.5 bg-gray-200 rounded"
+          >
+            <div
+              class="absolute h-full bg-blue-500 rounded"
+              style="width: 50%;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="container text-2xl mx-auto"
+      >
+        Most Viewed
+      </div>
+      <div
+        class="flex mt-1 pb-6 relative  w-full container-movies overflow-x-scroll overflow-y-hidden  items-center container-card p-6"
+      >
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view1.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view1.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view1.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view4.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view2.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view3.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view3.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="card-large flex flex-grow  cursor-pointer overflow-hidden transform transition duration-200"
+            >
+              <img
+                alt=""
+                src="http://localhost:4000/view2.png"
+              />
+              <div
+                class="absolute bottom-20 w-full flex justify-center"
+              >
+                <div
+                  class="bg-blue-600 px-4 font-bold text-sm"
+                >
+                  MOVIE ORIGINAL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="container text-2xl mx-auto"
+      >
+        Recommended movies
+      </div>
+      <div
+        class="flex mt-1 pb-6 relative  w-full container-movies overflow-x-scroll overflow-y-hidden  items-center container-card py-0"
+      >
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card border-4"
+                src="http://localhost:4000/card1.png"
+              />
+              <img
+                alt=""
+                class="image-selected w-10 absolute bottom-2"
+                data-testid="border-active"
+                src="triangle.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card1.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more2.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/more4.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-1 z-0"
+        >
+          <div
+            data-testid="card"
+          >
+            <div
+              class="flex flex-col items-center card hover:z-10 overflow-hidden  cursor-pointer"
+            >
+              <img
+                alt=""
+                class="img-card"
+                src="http://localhost:4000/card2.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="w-full relative bg-cover md:bg-contain bg-no-repeat bg-center md:bg-right bg-center flex flex-col"
+      style="background-image: url(http://localhost:4000/avatar.png); min-height: 700px;"
+    >
+      <div
+        class="w-full h-20 bglinear-black-180"
+      />
+      <div
+        class="z-0 w-full h-full absolute bglinear-black-left"
+      />
+      <div
+        class="z-10 mt-20 flex justify-around md:justify-center  text-xl font-bold"
+      >
+        <div
+          class="md:mx-8 pb-1 "
+        >
+          <a
+            href="/home/"
+          >
+            OVERVIEW
+          </a>
+        </div>
+        <div
+          class="md:mx-8 pb-1"
+        >
+          <a
+            href="/home/more"
+          >
+            MORE LIKE THIS
+          </a>
+        </div>
+        <div
+          class="md:mx-8 pb-1"
+        >
+          <a
+            href="/home/details"
+          >
+            DETAILS
+          </a>
+        </div>
+      </div>
+      <div
+        class="w-full h-20 bglinear-black flex flex-grow"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

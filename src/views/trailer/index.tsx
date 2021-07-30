@@ -3,16 +3,22 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import Loading from 'components/loading';
 
+import {
+  ADD_MOVIE_LIST,
+  REMOVE_MOVIE_LIST,
+  SEEN_MOVIE,
+} from 'graphql/mutations';
 import Modal from 'components/modal';
 import Add from 'assets/icons/add.png';
 import Star from 'assets/icons/star.png';
 import Save from 'assets/icons/save.png';
+import Play from 'assets/icons/bt_play.png';
 import Close from 'assets/icons/close.png';
 import Camera from 'assets/icons/camera.png';
 import { useParams } from 'react-router-dom';
 import { ItemInterface } from 'components/card';
 import { GET_MOVIE, GET_LISTS } from 'graphql/queries';
-import { ADD_MOVIE_LIST, REMOVE_MOVIE_LIST } from 'graphql/mutations';
+import { ReadFieldFunction } from '@apollo/client/cache/core/types/common';
 
 export type List = {
   id: number;
@@ -34,15 +40,15 @@ const Trailer = () => {
   });
 
   const { id } = useParams<{ id: string }>();
+
   const [isOpenList, openList] = useState(false);
+  const [isPlay, setPlay] = useState(false);
 
   const { data, loading } = useQuery(GET_MOVIE, {
     variables: { id: parseInt(id, 10) },
   });
 
   const { data: dataLists, loading: loadingLists } = useQuery(GET_LISTS);
-
-  const lists: List[] = dataLists?.getLists;
 
   const [removeMovie, { loading: loadingRemoveMovie }] = useMutation(
     REMOVE_MOVIE_LIST,
@@ -51,11 +57,16 @@ const Trailer = () => {
     }
   );
 
+  const [playMovie] = useMutation(SEEN_MOVIE, {
+    errorPolicy: 'all',
+  });
+
   const [addMovie, { loading: loadingAddMovie }] = useMutation(ADD_MOVIE_LIST, {
     errorPolicy: 'all',
   });
 
   if (loading || loadingLists) return <Loading />;
+  const lists: List[] = dataLists.getLists;
 
   const movie: ItemInterface = data.getMovie;
 
@@ -63,11 +74,37 @@ const Trailer = () => {
     movies.some(({ id: movieId }) => movieId === movie.id)
   );
 
+  const updateListCache = ({
+    listsCache,
+    readField,
+    listMutated,
+  }: {
+    listsCache: List[];
+    readField: ReadFieldFunction;
+    listMutated: List;
+  }) =>
+    listsCache.reduce((acc: List[], listCurr: List) => {
+      let newList = { ...listCurr };
+      if (readField('id', newList) === listMutated.id) {
+        newList = listMutated;
+      }
+      acc.push(newList);
+      return acc;
+    }, []);
+
   const addMovieToList = async (listId: number) => {
     if (!loadingAddMovie) {
       addMovie({
-        refetchQueries: [{ query: GET_LISTS }],
         variables: { input: { listId, movieId: movie.id } },
+        update(cache, { data: { addMovieToList: listMutated } }) {
+          cache.modify({
+            fields: {
+              getLists(listsCache: List[], { readField }) {
+                return updateListCache({ listsCache, readField, listMutated });
+              },
+            },
+          });
+        },
       });
     }
   };
@@ -75,10 +112,25 @@ const Trailer = () => {
   const removeMovieToList = () => {
     if (list && !loadingRemoveMovie) {
       removeMovie({
-        refetchQueries: [{ query: GET_LISTS }],
         variables: { input: { listId: list.id, movieId: movie.id } },
+        update(cache, { data: { removeMovieToList: listMutated } }) {
+          cache.modify({
+            fields: {
+              getLists(listsCache: List[], { readField }) {
+                return updateListCache({ listsCache, readField, listMutated });
+              },
+            },
+          });
+        },
       });
     }
+  };
+
+  const playVideo = async () => {
+    await playMovie({
+      variables: { movieId: movie.id },
+    });
+    setPlay(true);
   };
 
   return (
@@ -115,8 +167,10 @@ const Trailer = () => {
                 >
                   {lists.map(({ name, id: listId }) => (
                     <div
+                      data-testid="user-list"
                       className="cursor-pointer hover:font-bold"
                       onClick={() => addMovieToList(listId)}
+                      key={listId}
                     >
                       {name}
                     </div>
@@ -157,7 +211,7 @@ const Trailer = () => {
           </div>
         </div>
         <div
-          className="w-2/3 overflow-hidden relative m-auto"
+          className="w-2/3 overflow-hidden relative m-auto "
           style={{ height: '500px' }}
         >
           {movie?.trailer_url && (
@@ -165,8 +219,24 @@ const Trailer = () => {
               width="100%"
               className="w-full h-full absolute"
               height="auto"
-              src={movie?.trailer_url}
+              src={
+                isPlay ? `${movie?.trailer_url}?autoplay=1` : movie?.trailer_url
+              }
             />
+          )}
+          {!isPlay && (
+            <>
+              <div className="absolute w-full h-full bg-black opacity-50" />
+              <div className="absolute w-full h-full  flex justify-center items-center opacity-80">
+                <img
+                  data-testid="play-video"
+                  className="w-40 cursor-pointer"
+                  src={Play}
+                  alt=""
+                  onClick={playVideo}
+                />
+              </div>
+            </>
           )}
         </div>
       </div>
