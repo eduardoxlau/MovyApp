@@ -36,11 +36,12 @@ const Home = () => {
 
   if (loading || loadingList || loadingSeen) return <Loading />;
 
-  const movies: ItemInterface[] = data.getMovies.items;
+  const movies: ItemInterface[] = data?.getMovies.items;
   const moviesSeen: ItemInterface[] = dataMoviesSeen?.getMoviesSeen;
-  const moviesOnMyLists = dataLists.getLists
-    .map((list: List) => list.movies.map((movie) => movie))
-    .flat();
+  const moviesOnMyLists =
+    dataLists?.getLists
+      ?.map((list: List) => list.movies.map((movie) => movie))
+      .flat() || [];
 
   const sectionCards = ({
     title,

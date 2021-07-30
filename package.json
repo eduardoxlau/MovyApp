@@ -5,16 +5,15 @@
   "dependencies": {
     "@apollo/client": "^3.3.21",
     "@craco/craco": "^6.2.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.0",
-    "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "graphql": "^15.5.1",
     "classnames": "^2.3.1",
+    "graphql": "^15.5.1",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "node-sass": "4.14.1",
@@ -35,7 +34,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.tsx' --ignore-pattern node_modules/",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "cypress": "cypress run"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -61,19 +62,25 @@
     ]
   },
   "devDependencies": {
+    "@apollo/react-testing": "^4.0.0",
+    "@types/react": "^17.0.15",
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/parser": "^4.28.3",
     "autoprefixer": "^9",
+    "cypress": "^8.0.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "ts-jest": "^27.0.4",
+    "waait": "^1.0.5"
   }
 }
