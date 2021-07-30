@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render snapshot footer 1`] = `
+<DocumentFragment>
+  <footer
+    class="bg-black pb-24"
+  >
+    <div
+      class="container mx-auto"
+    >
+      <div
+        class="text-white text-3xl mb-4"
+      >
+        Questions? Call +1 (408) 600-1722 (USA)
+      </div>
+      <div
+        class="flex flex-wrap md:flex-row text-center md:text-left"
+      >
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            FAQ
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Help Center
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Account
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Media Center
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Privacy
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Jobs
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Ways to Watch
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Terms of use
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Speed Test
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Cookie Preferences
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Corporate Information
+          </a>
+        </div>
+        <div
+          class="flex-shrink w-1/2 md:w-1/4 my-4 text-white text-lg"
+        >
+          <a
+            href="./"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
