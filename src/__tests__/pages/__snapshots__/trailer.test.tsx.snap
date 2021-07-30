@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should render snapshot Home 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-black flex flex-col flex-grow text-white"
+  >
+    <div
+      class="container mx-auto my-40"
+    >
+      <div
+        class="flex mb-4 flex-col md:flex-row"
+      >
+        <div
+          class="flex"
+        >
+          <div>
+            2019 . Action, Thiller
+          </div>
+          <div
+            class="flex items-center ml-20"
+          >
+            <img
+              alt=""
+              class="w-5 mr-3"
+              src="save.png"
+            />
+            Watch Later
+          </div>
+        </div>
+        <div
+          class="flex items-center mt-3 md:mt-0 md:ml-20 relative  "
+        >
+          <div>
+            <div
+              class="flex cursor-pointer"
+            >
+              <img
+                alt=""
+                class="w-7 h-7 mr-3"
+                src="add.png"
+              />
+              add to list
+            </div>
+            <div
+              class="flex flex-col bg-blue-500 p-3 rounded top-8 min-w-full w-max text-center hidden"
+            >
+              <div
+                class="cursor-pointer hover:font-bold"
+                data-testid="user-list"
+              >
+                Rafael's list
+              </div>
+              <div
+                class="cursor-pointer font-bold  text-lg"
+              >
+                Create new List
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-6xl font-black "
+      >
+        International Research Orchestrator
+      </div>
+      <div
+        class="flex mt-3 mb-16 items-center justify-around md:justify-start"
+      >
+        <div
+          class="bg-pink-600 px-2 py-0.5 rounded md:mr-5 text-sm flex items-center"
+        >
+          2.30h
+        </div>
+        <div
+          class="mx-10 md:mr-6 text-lg flex items-center text-center flex-col md:flex-row"
+        >
+          <img
+            alt=""
+            class="w-6 mr-3"
+            src="camera.png"
+          />
+          <div>
+            Quentien cuarentino
+          </div>
+        </div>
+        <div
+          class="flex items-center"
+        >
+          <img
+            alt=""
+            class="w-4 mr-1"
+            src="star.png"
+          />
+          <img
+            alt=""
+            class="w-4 mr-1"
+            src="star.png"
+          />
+          <img
+            alt=""
+            class="w-4 mr-1"
+            src="star.png"
+          />
+          <img
+            alt=""
+            class="w-4 mr-1"
+            src="star.png"
+          />
+        </div>
+      </div>
+      <div
+        class="w-2/3 overflow-hidden relative m-auto "
+        style="height: 500px;"
+      >
+        <iframe
+          class="w-full h-full absolute"
+          height="auto"
+          src="https://www.youtube.com/embed/hf_wom7OiW8"
+          width="100%"
+        />
+        <div
+          class="absolute w-full h-full bg-black opacity-50"
+        />
+        <div
+          class="absolute w-full h-full  flex justify-center items-center opacity-80"
+        >
+          <img
+            alt=""
+            class="w-40 cursor-pointer"
+            data-testid="play-video"
+            src="bt_play.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

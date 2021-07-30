@@ -26,6 +26,22 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation UpdateUser($input: UpdateUserInput!) {
+    updateUser(input: $input) {
+      status
+    }
+  }
+`;
+
+export const REMOVE_USER = gql`
+  mutation DeleteUser {
+    deleteUser {
+      status
+    }
+  }
+`;
+
 export const CREATE_LIST = gql`
   mutation CreateList($input: CreateListInput!) {
     createList(input: $input) {
@@ -55,7 +71,15 @@ export const REMOVE_LIST = gql`
 export const REMOVE_MOVIE_LIST = gql`
   mutation RemoveMovieToList($input: ListMovieInput!) {
     removeMovieToList(input: $input) {
-      status
+      id
+      name
+      description
+      movies {
+        id
+        title
+        trailer_url
+        card_url
+      }
     }
   }
 `;
@@ -63,6 +87,22 @@ export const REMOVE_MOVIE_LIST = gql`
 export const ADD_MOVIE_LIST = gql`
   mutation AddMovieToList($input: ListMovieInput!) {
     addMovieToList(input: $input) {
+      id
+      name
+      description
+      movies {
+        id
+        title
+        trailer_url
+        card_url
+      }
+    }
+  }
+`;
+
+export const SEEN_MOVIE = gql`
+  mutation seenMovie($movieId: Float!) {
+    seenMovie(movieId: $movieId) {
       status
     }
   }

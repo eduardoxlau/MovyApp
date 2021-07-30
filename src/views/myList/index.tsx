@@ -43,6 +43,7 @@ const MyList = () => {
               <img
                 className="w-6 ml-4 cursor-pointer"
                 src={Edit}
+                data-testid="edit-list"
                 alt=""
                 onClick={() => setInfoModal({ show: true, list, isEdit: true })}
               />
@@ -65,7 +66,7 @@ const MyList = () => {
             </div>
             <div className="flex my-7 w-full overflow-scroll items-center container-card">
               {list.movies.map((item: ItemInterface, index: number) => (
-                <div className="mx-1 cursor-pointer">
+                <div className="mx-1 cursor-pointer" key={item.id}>
                   <Link to={`/trailer/${item.id}`}>
                     <Card item={item} scale index={index} />
                   </Link>
