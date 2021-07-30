@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { ChangeEvent, FormEvent, useState, useEffect, useContext } from 'react';
 
 import Fb from 'assets/icons/fb.png';
-import Input from 'components/input/light';
+import Input from 'components/input';
 import { UserContext } from 'storage/context';
 import Notification from 'components/notification';
 
@@ -26,7 +26,7 @@ const Login = () => {
     }
   }, [data]);
 
-  const [formData, updateFormData] = useState({});
+  const [formData, updateFormData] = useState({ email: '', password: '' });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     updateFormData({
@@ -50,6 +50,7 @@ const Login = () => {
                 name="email"
                 type="email"
                 required
+                value={formData?.email}
                 onChange={handleChange}
               />
               <Input
@@ -57,6 +58,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 required
+                value={formData?.password}
                 onChange={handleChange}
               />
             </div>

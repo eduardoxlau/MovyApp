@@ -3,10 +3,9 @@ import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import Logo from 'assets/logo.png';
-import User from 'assets/user.png';
 import Look from 'assets/icons/look.png';
-import { signOut } from 'storage/persist';
 import Arrow from 'assets/icons/arrow.png';
+import ProfileImg from 'assets/profile.png';
 import { UserContext } from 'storage/context';
 
 const items = [
@@ -19,7 +18,8 @@ const items = [
 
 const Menu = () => {
   const { context, setContext } = useContext(UserContext);
-  const { isAuth } = context;
+  const { isAuth, user } = context;
+
   const [isOpen, setMenu] = useState(false);
   const [isSettingOpen, setSetting] = useState(false);
 
@@ -44,8 +44,16 @@ const Menu = () => {
       >
         <div className="flex items-center ">
           <img src={Look} alt="" />
-          <div className="bg-button ml-5 p-0.5 rounded-full">
-            <img className="w-12" src={User} alt="" />
+          <div
+            className={`ml-5 p-0.5 rounded-full ${
+              user?.photo_path ? 'bg-button' : 'bg-white'
+            }`}
+          >
+            <img
+              className="w-12 rounded-full"
+              src={user?.photo_path || ProfileImg}
+              alt=""
+            />
           </div>
           <div
             className={classNames({
@@ -79,7 +87,6 @@ const Menu = () => {
             onClick={() => {
               setSetting(false);
               setContext({ isAuth: false });
-              signOut();
             }}
           >
             <Link to="/">Sign Out</Link>

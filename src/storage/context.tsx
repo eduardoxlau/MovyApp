@@ -3,12 +3,12 @@ import { getPersistContext, setPersistContext } from 'storage/persist';
 
 export const initialState = { isAuth: false };
 
-type User = {
+export type User = {
   id: number;
   email: string;
   full_name: string;
   admin: boolean;
-  photo_path: boolean;
+  photo_path: string;
 };
 
 export type Context = {

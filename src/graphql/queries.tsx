@@ -17,6 +17,25 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const GET_MOVIES_SEEN = gql`
+  query GetMoviesSeen {
+    getMoviesSeen {
+      id
+      title
+      overview
+      trailer_url
+      card_url
+      poster_url
+      backdrop_url
+      stars
+      genres {
+        name
+      }
+    }
+  }
+`;
+
 export const GET_MOVIE = gql`
   query GetMovie($id: Float!) {
     getMovie(id: $id) {
@@ -82,7 +101,9 @@ export const GET_MOVIES_PAGINATE = gql`
 export const GET_LISTS = gql`
   query GetLists {
     getLists {
+      id
       name
+      description
       movies {
         id
         title
