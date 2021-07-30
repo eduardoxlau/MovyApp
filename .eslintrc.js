@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    'cypress/globals': true,
     browser: true,
     es2021: true,
   },
@@ -33,7 +34,7 @@ module.exports = {
       },
     },
   },
-  plugins: ['prettier', 'react', '@typescript-eslint'],
+  plugins: ['prettier', 'react', '@typescript-eslint', 'cypress'],
   rules: {
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'function-paren-newline': 'off',

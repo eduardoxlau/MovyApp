@@ -43,6 +43,7 @@ const MyList = () => {
               <img
                 className="w-6 ml-4 cursor-pointer"
                 src={Edit}
+                data-testid="edit-list"
                 alt=""
                 onClick={() => setInfoModal({ show: true, list, isEdit: true })}
               />
