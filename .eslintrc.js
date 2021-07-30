@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    'cypress/globals': true,
     browser: true,
     es2021: true,
   },
@@ -27,13 +28,16 @@ module.exports = {
           ['components', './src/components'],
           ['storage', './src/storage'],
           ['common', './src/common'],
+          ['__mocks__', './src/__mocks__'],
         ],
         extensions: ['.js', '.tsx', '.json'],
       },
     },
   },
-  plugins: ['prettier', 'react', '@typescript-eslint'],
+  plugins: ['prettier', 'react', '@typescript-eslint', 'cypress'],
   rules: {
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'function-paren-newline': 'off',
     'jsx-a11y/iframe-has-title': 'off',
     'react/jsx-one-expression-per-line': 'off',
     camelcase: 'off',

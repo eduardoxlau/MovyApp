@@ -11,6 +11,7 @@ import Trailer from 'views/trailer';
 import Profile from 'views/profile';
 import Footer from 'components/footer';
 import ProtectedRoute from 'common/protectedRoute';
+import { UserContextProvider } from 'storage/context';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL,
@@ -19,34 +20,36 @@ const client = new ApolloClient({
 });
 
 const App = () => (
-  <ApolloProvider client={client}>
-    <Router>
-      <div className="flex flex-col h-full">
-        <Menu />
-        <Switch>
-          <ProtectedRoute exact path={['/login', '/']}>
-            <Login />
-          </ProtectedRoute>
-          <ProtectedRoute path="/profile">
-            <Profile />
-          </ProtectedRoute>
-          <ProtectedRoute path="/my-list">
-            <MyList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/home">
-            <Home />
-          </ProtectedRoute>
-          <ProtectedRoute path="/trailer/:id">
-            <Trailer />
-          </ProtectedRoute>
-          <ProtectedRoute path={['/movies', '/series', '/recently']}>
-            <Movies />
-          </ProtectedRoute>
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
-  </ApolloProvider>
+  <UserContextProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex flex-col h-full">
+          <Menu />
+          <Switch>
+            <ProtectedRoute exact path={['/login', '/']}>
+              <Login />
+            </ProtectedRoute>
+            <ProtectedRoute path="/profile">
+              <Profile />
+            </ProtectedRoute>
+            <ProtectedRoute path="/my-list">
+              <MyList />
+            </ProtectedRoute>
+            <ProtectedRoute path="/home">
+              <Home />
+            </ProtectedRoute>
+            <ProtectedRoute path="/trailer/:id">
+              <Trailer />
+            </ProtectedRoute>
+            <ProtectedRoute path={['/movies', '/series', '/recently']}>
+              <Movies />
+            </ProtectedRoute>
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  </UserContextProvider>
 );
 
 export default App;

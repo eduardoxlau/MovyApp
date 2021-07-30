@@ -2,7 +2,7 @@ import { ReactChild } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import Login from 'views/login';
-import { getAccessToken } from 'storage';
+import { getAccessToken } from 'storage/persist';
 
 const ProtectedRoute = ({
   children,
