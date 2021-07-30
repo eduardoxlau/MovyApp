@@ -43,6 +43,7 @@ module.exports = {
     camelcase: 'off',
     'comma-dangle': 'off',
     'implicit-arrow-linebreak': 'off',
+    'comma-dangle': 'off',
     'react/jsx-props-no-spreading': 'off',
     'operator-linebreak': 'off',
     'object-curly-newline': 'off',
